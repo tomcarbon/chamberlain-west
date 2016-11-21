@@ -1,0 +1,1765 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+
+		<title>chamberlain-west.org</title>
+
+        	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="keywords" content="dogecoin, bitcoin, wallet, multisig, multisignature, address, browser, javascript, js, broadcast, transaction, verify, decode" />
+		<meta name="description" content="A Dogecoin Wallet written in Javascript, for shibes to use to collaborate with and make good things happen. To The Moon!" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+		<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="css/style.css" media="screen">
+		
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/moment.min.js"></script>
+		<script type="text/javascript" src="js/transition.js"></script>
+		<script type="text/javascript" src="js/collapse.js"></script>
+
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+
+		<script type="text/javascript" src="js/crypto-min.js"></script>
+		<script type="text/javascript" src="js/crypto-sha256.js"></script>
+		<script type="text/javascript" src="js/crypto-sha256-hmac.js"></script>
+		<script type="text/javascript" src="js/sha512.js"></script>
+		<script type="text/javascript" src="js/ripemd160.js"></script>
+		<script type="text/javascript" src="js/aes.js"></script>
+
+		<script type="text/javascript" src="js/qrcode.js"></script>
+		<script type="text/javascript" src="js/qcode-decoder.min.js"></script>
+		<script type="text/javascript" src="js/jsbn.js"></script>
+		<script type="text/javascript" src="js/ellipticcurve.js"></script>
+
+		<script type="text/javascript" src="js/coin.js"></script>
+		<script type="text/javascript" src="js/coinbin.js"></script>
+		<script type="text/javascript" src="js/moist.js"></script>
+		<script type="text/javascript" src="js/banksuite.js"></script>
+	</head>
+
+	<body>
+		<!--a href="http://dogecoinmultisig.org" ><img src="images/dcmslogo.gif" style="height:180px" ></a-->
+		<div id="wrap">
+			<!-- Fixed navbar -->
+			<div id="header" class="navbar navbar-default " role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!--a href="http://dogecoinmultisig.org" class="navbar-brand" id="homeBtn"><img src="images/coinbin.gif" style="height:55px;margin-top:-5px"></a-->
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<!--li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span> New<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#newAddress" data-toggle="tab">New Dogecoin Address</a></li>
+									<li class="divider"></li>
+									<li><a href="#newMultiSig" data-toggle="tab">Dogecoin MultiSig Address</a></li>
+									<li><a href="#newTimeLocked" data-toggle="tab">Time Locked Address</a></li>
+									<li class="divider"></li>
+									<li><a href="#redeemMultiSig" data-toggle="tab">Redeem</a></li>
+									<li class="divider"></li>
+									<li><a href="#newTransaction" data-toggle="tab">Transaction</a></li>
+								</ul>
+							</li-->
+							<li><a href="#cwhome" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Home</a></li>
+							<li><a href="#physics" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span>Selected Physics Papers</a></li>
+							<li><a href="#economics" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span>Selected Economics Papers</a></li>
+							<!--li><a href="#broadcast" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> Broadcast</a></li>
+							<li><a href="#cpToolbox" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> Tools</a></li>
+							<li><a href="#bankSuite" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span>Bank Suite</a></li-->
+							<!--li><a href="#wallet" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Wallet</a></li-->
+							<!--li><a href="#about" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> About</a></li-->
+
+							<li class="hidden"><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div id="content" class="container">
+
+				<noscript class="alert alert-danger center-block"><span class="glyphicon glyphicon-exclamation-sign"></span> This page uses javascript, please enable it to continue!</noscript>
+
+				<div class="tab-content">
+					<div class="tab-pane tab-content" id="home">
+						<div class="row">
+							<div class="col-md-12">
+								<h2>Pineapple. <small>Welcome to the Dogecoin Blockchain</small></h2>
+							</div>
+						</div>
+
+						<div class="jumbotron">
+							<h1>DOGECOIN IS WOW</h1>
+							<p>start using Dogecoin.  </p>
+							<p><a class="btn btn-primary btn-lg" href="#about" role="button">Learn more &raquo;</a></p>
+						</div>
+
+						<hr size="5">
+
+						<!--div class="row">
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-ok"></span> Open Source</h3>
+								<p>dogecoinmultisig.org/Coinbin is an open source web based wallet written in javascript and released under the <a href="LICENSE">MIT license</a> which means it's free to use and edit.</p>
+							</div>
+
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-fullscreen"></span> MultiSig</h3>
+								<p>Hello Shibes. <a href="#newMultiSig">zee Dogecoin multisig!</a> Here's a solution which works seamlessly offline and with other dogecoin clients.</p>
+							</div>
+
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-bitcoin"></span> Raw Transactions</h3>
+								<p><a href="#newTransaction">Create</a>, <a href="#verify">verify</a>, <a href="#sign">sign</a> and <a href="#broadcast">broadcast</a> custom raw transactions online with advanced features and minimal effort!</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-piggy-bank"></span> Wallet</h3>
+								<p>Quick access to an <a href="#wallet">online wallet</a> where only you have access to your own private keys!</p>
+							</div>
+
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-globe"></span> Addresses</h3>
+								<p>We support <a href="#newAddress">regular addresses</a> but also <a href="#newMultiSig">multisig</a> and stealth, and access to your own private keys!</p>
+							</div>
+
+							<div class="col-md-4">
+								<h3><span class="glyphicon glyphicon-wrench"></span>  Development</h3>
+								<p>Use what we've built to write your own projects! See our documention (coming soon), or contribute at <a href="https://github.com/OutCast3k/coinbin/">github</a>.</p>
+							</div>
+						</div-->
+					</div>
+
+					<div class="tab-pane tab-content" id="wallet">
+						<div class="row">
+							<div class="col-md-12">
+								<h2>Open Wallet <small> browser based Ðogecoin wow</small></h2>
+								<div id="openLogin">
+									<form class="form-signin" role="form" action="javascript:;">
+
+										<p>Use the form below to open a wallet and begin using this service.</p>
+
+										<div class="alert alert-warning">
+											<b>Notice</b>: Different email address and password combination will open different wallets, be careful when entering your details as lost accounts can not be recovered! 
+										</div>
+
+										<input id="openEmail" type="email" class="form-control" placeholder="Email address" required autofocus>
+										<input id="openPass" type="password" class="form-control" placeholder="Password" required>
+										<input id="openPassConfirm" type="password" class="form-control" placeholder="Password confirm" required>
+										<br>
+										<div id="openLoginStatus" class="alert alert-danger hidden"></div>
+										<button id="openBtn" class="btn btn-primary" type="submit">Submit</button>
+									</form>
+								</div>
+
+								<div id="openWallet" class="hidden">
+									<div class="row">
+										<div class="col-md-12">
+											<p><span style="float:right;"><a href="javascript:;" id="walletLogout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></span>Welcome to your wallet, enjoy your stay!</p>
+										</div>
+										<div class="col-md-12" align="center">
+											<div id="walletQrCode"></div> <br>
+											<div>
+												<span id="walletLoader" class="hidden"><img src="images/loader.gif"></span>
+												<span id="walletAddress"></span>
+											</div>
+											<br>
+											<div style="text-align:center; width:350px;">
+												<ul class="nav nav-pills" role="tablist">
+													<li role="presentation" class="active"><a href="javascript:;" id="walletBalance">0.00 BTC</a></li>
+													<li role="presentation"><a href="javascript:;" id="walletShowSpend">Spend</a></li>
+													<li role="presentation"><a id="walletHistory" href="javascript:;" target="_blank">History</a></li>
+													<li role="presentation"><a href="https://localbitcoins.com/?ch=173j" target="_blank">Buy</a></li>
+													<li role="presentation"><a href="javascript:;" id="walletShowKeys">Keys</a></li>
+												</ul>
+
+												<br>
+
+												<div id="walletKeys" class="hidden">
+													<label>Public Key</label>
+													<input class="form-control pubkey" type="text" readonly>
+													<label>Private key</label>
+													<div class="input-group">
+														<input class="form-control privkey" type="password" readonly>
+
+														<span class="input-group-btn">
+															<button class="showKey btn btn-default" type="button">Show</button>
+														</span>
+													</div>
+													<label>Private Key (AES256 encrypted key)</label>
+													<input class="form-control privkeyaes" type="text" readonly>
+												</div>
+
+												<div id="walletSpend" class="hidden">
+													<div class="row">
+														<div class="form-inline output">
+															<div class="col-xs-8">
+																<label>Address</label>
+															</div>
+
+															<div class="col-xs-3">
+																<label>Amount</label>
+															</div>
+														</div>
+													</div>
+
+													<div class="row" id="walletSpendTo">
+														<div class="form-horizontal output">
+															<div class="col-xs-8">
+																<input type="text" class="form-control addressTo" data-original-title="" title="">
+															</div>
+															<div class="col-xs-3">
+																<input type="text" class="form-control amount" data-original-title="" title="" placeholder="0.00">
+
+															</div>
+
+															<a href="javascript:;" class="addressAdd"><span class="glyphicon glyphicon-plus"></span></a>
+															<br><br>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-6">
+															<label><abbr title="the amount to pay in network miner fees - 0.0001 or more recommended">Transaction Fee</abbr></label>
+															<input type="text" class="form-control" value="0.0001" id="txFee">
+														</div>
+														<div class="col-xs-5">
+															<label><abbr title="the amount to donate to coinb.in">Donation</abbr></label>
+															<input type="text" class="form-control" value="0.001" id="developerDonation">
+														</div>
+													</div>
+													<br>
+
+													<div id="walletSendStatus" class="alert alert-danger hidden"></div>
+
+													<button class="btn btn-primary" type="button" id="walletSendBtn">Send</button>
+													<button class="btn btn-default" type="button">Reset</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="tab-pane tab-content" id="newAddress">
+						<a href="http://dogecoinmultisig.org" ><img src="images/dcmslogo2.jpg" style="height:180px" ></a>
+						<h2>New Ðogecoin Address <small>create a new address</small></h2>
+						<p>Any keys used you will need to manually store safely as they will be needed later to redeem the Ðogecoins.</p>
+						<label>Address (Share)</label>
+
+						<div class="input-group">
+							<input id="newBitcoinAddress" type="text" class="form-control address" value="" readonly>
+							<span class="input-group-btn">
+								<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+							</span>
+						</div>
+
+						<label>Public key (Share)</label>
+						<input id="newPubKey" type="text" class="form-control" readonly>
+						<label>Private key (WIF key)</label>
+						<div class="input-group">
+							<input id="newPrivKey" type="password" class="form-control" value="" readonly>
+							<span class="input-group-btn">
+								<button class="showKey btn btn-default" type="button">Show</button>
+							</span>
+						</div>
+
+						<!--div id="aes256wifkey" class="hidden">
+							<label>AES-256 Encrypted WIF key</label>
+							<input id="newPrivKeyEnc" type="text" class="form-control" value="" readonly>
+						</div-->
+
+
+						<div class="checkbox">
+							<!--label><input type="checkbox" id="encryptKey" class="checkbox-inline"> Encrypt Private Key with AES-256 Password</label-->
+							<div id="aes256passform" class="row hidden">
+								<div class="col-md-6">
+									<input type="password" class="form-control" id="aes256pass" placeholder="Password"></label>
+								</div>
+								<div class="col-md-6">
+									<input type="password" class="form-control" id="aes256pass_confirm" placeholder="Confirm Password">
+								</div>
+							</div>
+
+							<div id="aes256passStatus" class="row hidden">
+								<div class="col-md-12">
+									<br>
+									<div class="alert alert-danger"> <span class="glyphicon glyphicon-exclamation-sign"></span> Your passwords do not match, please try again!</div>
+								</div>
+							</div>
+
+						</div>
+
+						<label>Add random information here:</label>
+						<textarea id="userRandom" class="form-control script" style="height:100px" ></textarea>
+
+						<input type="button" class="btn btn-primary" value="Make New Address (offline is OK)" id="newKeysBtn">
+
+                                            <!--h3>Address Options</h3>
+                                                <p>You can use the advanced options below to generate different kind of keys and addresses.</p-->
+                                                <!--div class="checkbox">
+                                                        <label><input type="checkbox" id="newCompressed" class="checkbox-inline" checked> Compress <span class="text-muted">(recommended)</span></label>
+                                                </div-->
+                                                <!--div class="checkbox">
+                                                        <label><input type="checkbox" id="newBrainwallet" class="checkbox-inline"> Custom Seed or Brain Wallet</label>
+                                                        <input type="text" class="form-control hidden" id="brainwallet">
+                                                </div-->
+
+						<br>
+					</div>
+
+
+
+
+					<div class="tab-pane tab-content" id="bankSuite">
+						<a href="http://dogecoinmultisig.org" ><img src="images/dcmslogo1.jpg" style="height:180px" ></a>
+						<h1>You Hold The Keys</h1>
+
+						<h2>Dogecoin Bankings Suite</h2>
+						<p><small>You keep one piece of information safe. In return you own the six dogecoin accounts mathematically associated with it.</p>
+						<input id="bankSuiteQuickInstructions" type="button" class="btn btn-xs btn-info" value="Click Here for Super Quick Instructions" >
+						<p><small>You may share the Public Suite Key, or keep it to yourself.</p>
+						<p><small>These static dogecoin multisignatures can be computed from either Suite Key.</p>
+						<p><small>Do NOT lose your Private Suite Key. Record it and save it.</p>
+						<p><small>(if you bandy your Private Key about it is susceptible to theft)</p>
+						<p><small>These accounts are disposable. You may make as many of them as you like. </small></p>
+						<p><small>You can break a Suite Key in half, and then share it with another person, etc. Geekspeak, they are just 2 Pub/PrivKeys put together!</p>
+						<p><small>You can run this page offline.</small></p>
+						<p><small>This program will create identical multisig values as compared to core.</small></p>
+						</small>
+						</small>
+						</small>
+						</small>
+						</small>
+						</small>
+						<!-- removed until it works20160914input type="button" class="btn btn-warning btn-xs" value="Reset this Page" 	id="bankSuiteReset"-->
+						<hr size="5">
+						<input type="button" class="btn btn-success btn-xs" value="Make New Suite Keys" 
+							id="bankSuiteNewKeys"> or enter the <b>Public Suite Key</b> below (or 2 public keys) and click <button type="button" 
+							class="btn btn-danger btn-xs" id="bankSuiteLoad">here</button>
+						<textarea type="text" id="bankSuitePubKey1" class="form-control" placeholder="Insert Suite Key or Public Key here" cols="66" rows="1"></textarea>
+						<textarea type="text" id="bankSuitePubKey2" class="form-control" placeholder="(optional:) Insert another Public Key here" rows="1" cols="66"></textarea>
+                                                <div class="alert alert-success hidden" id="bankSuiteNewScreen01">
+							<label>Here is your new Public Suite Key:</label>
+                                                        <input id="bankSuiteNewPublicSuiteKey" type="text" class="form-control address" value="" readonly>
+                                                </div>
+                                                <div class="alert alert-info hidden" id="bankSuiteNewScreen03">
+							<label>Here is your new Private Suite Key (SAVE THIS IMMEDIATELY!):</label>
+                                                        <input id="bankSuiteNewPrivateSuiteKey" type="text" class="form-control address" value="" readonly>
+							<input type="button" class="btn btn-warning" value="Split into Two Private Keys" id="bankSuiteSplitPrivate">
+                                                        <input id="bankSuiteNewPrivateSuiteKeyS1" type="text" class="form-control address hidden" value="" readonly>
+                                                        <input id="bankSuiteNewPrivateSuiteKeyS2" type="text" class="form-control address hidden" value="" readonly>
+                                                </div>
+                                                <div class="alert-success" id="bankSuiteNewScreen02">
+						<p><b>Here is your shareable URL for this page</b><small><small> (it contains your Public Suite Key)</small></small>:</p>
+							<div class="input-group">
+								<input id="bankSuitePageURL" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+						<br>
+						<div id="bankSuiteLoadBtnWrapWait" class="hidden">
+							<input type="button" class="btn btn-warning" value="Please Wait" >
+						</div>
+
+						<div>
+							<b><p id="bankSuiteCumBalance"></p></b>
+						</div>
+						<hr size="5">
+
+						<br>
+						<h4><b>Personal 1 (1/1 multisig):</b></h4>
+							<div class="input-group">
+								<span class="input-group-addon">Address:</span>
+								<input id="bankSuitePersonal1" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+							<!--p>redeem script is invisible, but it's here.</p-->
+							<div class="hidden">
+								<input id="bankSuitePersonal1Redeem" type="text" class="form-control address" value="" readonly>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">URL:</span>
+								<input id="bankSuitePersonal1URL" type="text" class="form-control address" value="" readonly>
+							</div>
+							<b><p id="bankSuitePersonal1Balance"></p></b>
+							<b><p id="bankSuitePersonal1UCBalance"></b></p>
+							<input type="button" class="btn btn-info" value="Spend" id="bsTogBtn1">
+                                                	<div class="alert alert-success" id="bankSuitePersonal1PayBox">
+								<span>To Address:<input id="bankSuitePersonal1ToAddr" type="text" class="form-control address" value=""></span>
+								<span>Amount:<input id="bankSuitePersonal1ToAmt" type="text" class="form-control address" value=""></span>
+								<p><small><small>
+								<small>(the mining fee will be added on top of this amount, unless full amount, then it's subtracted!)</small>
+								</small></small></p>
+								<input type="button" class="btn btn-info" value="Next" id="bankSuitePay1">
+							</div>
+							<br>
+						<hr size="5">
+						<h4><b>Personal 2 (1/1 multisig):</b></h4>
+							<div class="input-group">
+								<span class="input-group-addon">Address:</span>
+								<input id="bankSuitePersonal2" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+							<!--p>redeem script is invisible, but it's here.</p-->
+							<div class="hidden">
+								<input id="bankSuitePersonal2Redeem" type="text" class="form-control address" value="" readonly>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">URL:</span>
+								<input id="bankSuitePersonal2URL" type="text" class="form-control address" value="" readonly>
+							</div>
+							<b><p id="bankSuitePersonal2Balance"></p></b>
+							<b><p id="bankSuitePersonal2UCBalance"></p></b>
+							<input type="button" class="btn btn-info" value="Spend" id="bsTogBtn2">
+                                                	<div class="alert alert-success " id="bankSuitePersonal2PayBox">
+								<span>To Address:<input id="bankSuitePersonal2ToAddr" type="text" class="form-control address" value=""></span>
+								<span>Amount:<input id="bankSuitePersonal2ToAmt" type="text" class="form-control address" value=""></span>
+								<p><small><small>
+								<small>(the mining fee will be added on top of this amount, unless full amount, then it's subtracted!)</small>
+								</small></small></p>
+								<input type="button" class="btn btn-info" value="Next" id="bankSuitePay2">
+							</div>
+							<br>
+						<hr size="5">
+						<h4><b>Slush Fund (1/2 multisig):</b></h4>
+							<div class="input-group">
+								<span class="input-group-addon">Address:</span>
+								<input id="bankSuiteSlush" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+							<!--p>redeem script is invisible, but it's here.</p-->
+							<div class="hidden">
+								<input id="bankSuiteSlushRedeem" type="text" class="form-control address" value="" readonly>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">URL:</span>
+								<input id="bankSuiteSlushURL" type="text" class="form-control address" value="" readonly>
+							</div>
+							<b><p id="bankSuitePersonal3Balance"></p></b>
+							<b><p id="bankSuitePersonal3UCBalance"></p></b>
+							<input type="button" class="btn btn-info" value="Spend" id="bsTogBtn3">
+                                                	<div class="alert alert-success " id="bankSuiteSlushPayBox">
+								<span>To Address:<input id="bankSuiteSlushToAddr" type="text" class="form-control address" value=""></span>
+								<span>Amount:<input id="bankSuiteSlushToAmt" type="text" class="form-control address" value=""></span>
+								<p><small><small>
+								<small>(the mining fee will be added on top of this amount, unless full amount, then it's subtracted!)</small>
+								</small></small></p>
+								<input type="button" class="btn btn-info" value="Next" id="bankSuitePay3">
+							</div>
+							<br>
+						<hr size="5">
+						<h4><b>Checking Account (1/2 multisig):</b></h4>
+							<div class="input-group">
+								<span class="input-group-addon">Address:</span>
+								<input id="bankSuiteChecking" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+							<!--p>redeem script is invisible, but it's here.</p-->
+							<div class="hidden">
+								<input id="bankSuiteCheckingRedeem" type="text" class="form-control address" value="" readonly>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">URL:</span>
+								<input id="bankSuiteCheckingURL" type="text" class="form-control address" value="" readonly>
+							</div>
+							<b><p id="bankSuitePersonal4Balance"></p></b>
+							<b><p id="bankSuitePersonal4UCBalance"></p></b>
+							<input type="button" class="btn btn-info" value="Spend" id="bsTogBtn4">
+                                                	<div class="alert alert-success " id="bankSuiteCheckingPayBox">
+								<span>To Address:<input id="bankSuiteCheckingToAddr" type="text" class="form-control address" value=""></span>
+								<span>Amount:<input id="bankSuiteCheckingToAmt" type="text" class="form-control address" value=""></span>
+								<p><small><small>
+								<small>(the mining fee will be added on top of this amount, unless full amount, then it's subtracted!)</small>
+								</small></small></p>
+								<input type="button" class="btn btn-info" value="Next" id="bankSuitePay4">
+							</div>
+							<br>
+						<hr size="5">
+						<h4><b>Savings Account (2/2 multisig):</b></h4>
+							<div class="input-group">
+								<span class="input-group-addon">Address:</span>
+								<input id="bankSuiteSavings" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+							<!--p>redeem script is invisible, but it's here.</p-->
+							<div class="hidden">
+								<input id="bankSuiteSavingsRedeem" type="text" class="form-control address" value="" readonly>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">URL:</span>
+								<input id="bankSuiteSavingsURL" type="text" class="form-control address" value="" readonly>
+							</div>
+							<b><p id="bankSuitePersonal5Balance"></p></b>
+							<b><p id="bankSuitePersonal5UCBalance"></p></b>
+							<input type="button" class="btn btn-info" value="Spend" id="bsTogBtn5">
+                                                	<div class="alert alert-success " id="bankSuiteSavingsPayBox">
+								<span>To Address:<input id="bankSuiteSavingsToAddr" type="text" class="form-control address" value=""></span>
+								<span>Amount:<input id="bankSuiteSavingsToAmt" type="text" class="form-control address" value=""></span>
+								<p><small><small>
+								<small>(the mining fee will be added on top of this amount, unless full amount, then it's subtracted!)</small>
+								</small></small></p>
+								<input type="button" class="btn btn-info" value="Next" id="bankSuitePay5">
+							</div>
+							<br>
+						<hr size="5">
+						<h4><b>Do Good Fund (2/2 multisig):</b></h4>
+							<div class="input-group">
+								<span class="input-group-addon">Address:</span>
+								<input id="bankSuiteDoGoodFund" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+							<!--p>redeem script is invisible, but it's here.</p-->
+							<div class="hidden">
+								<input id="bankSuiteDoGoodFundRedeem" type="text" class="form-control address" value="" readonly>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">URL:</span>
+								<input id="bankSuiteDoGoodFundURL" type="text" class="form-control address" value="" readonly>
+							</div>
+							<b><p id="bankSuitePersonal6Balance"></p></b>
+							<b><p id="bankSuitePersonal6UCBalance"></p></b>
+							<input type="button" class="btn btn-info" value="Spend" id="bsTogBtn6">
+                                                	<div class="alert alert-success " id="bankSuiteDoGoodFundPayBox">
+								<span>To Address:<input id="bankSuiteDoGoodFundToAddr" type="text" class="form-control address" value=""></span>
+								<span>Amount:<input id="bankSuiteDoGoodFundToAmt" type="text" class="form-control address" value=""></span>
+								<p><small><small>
+								<small>(the mining fee will be added on top of this amount, unless full amount, then it's subtracted!)</small>
+								</small></small></p>
+								<input type="button" class="btn btn-info" value="Next" id="bankSuitePay6">
+							</div>
+							<br>
+						<br>
+						<hr size="5">
+						<!--h4><b>2:3 Multisig (add one public key, two signatures required):</b></h4>
+								<p>Multisig Address:</p>
+							<div class="input-group">
+								<input id="bankSuiteArbitrated" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+								<p>Shareable URL:</p>
+							<div class="input-group">
+								<input id="bankSuiteArbitratedURL" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+								<br>
+							</div>
+							<p><small>(if you would like to use an Arbitrator, visit the Create Multisig page!)</small></p>
+								<p><small>The Arbitrator public key:</small></p>
+							<div class="input-group">
+								<input id="bankSuiteArbitratorKey" type="text" class="form-control address" 
+								value="044ddc503c9523b8ad8f4f16d19219502b1990ff78a8fd318dcfe574453f5b3f0c5818e4bb8d48b93f1f1e45110f0f36e1191600fbefc1dcaab422ed7a62069d53" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+							<br>
+						<br-->
+					</div>
+
+
+					<div class="tab-pane tab-content" id="newMultiSig">
+						<a href="http://dogecoinmultisig.org" ><img src="images/dcmslogo1.jpg" style="height:180px" ></a>
+						<h2>New Ðogecoin Multisig Address <small>Secure Ðogecoin multisig address</small></h2>
+
+						<div class="row">
+
+							<div class="col-md-8">
+								<p>Public keys can be <a href="#newAddress">generated in your browser</a> or from your Ðogecoin client</a>.</p>
+								<center>
+								<br>
+								<p>The multisigs that can be at this site here are 1/1, 1/2, 2/2, 1/3, and 2/3.</p>
+								<p>(we might add more types later!)</p>
+								<br>
+								</center>
+								<p>Put the public key(s) here:</p>
+								<!--p>Compressed and uncompressed public keys are accepted.</p-->
+							</div>
+
+							<div class="col-md-3">
+								<p class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> 
+								<a href="javascript:;" data-toggle="modal" data-target="#modalMediator">
+								<abbr>Add an arbitrator</abbr></a></p>
+							</div>
+
+							<div class="col-md-1">
+							</div>
+						</div>
+
+						<div id="multisigPubKeys" class="row">
+							<div class="form-horizontal">
+								<div class="col-xs-11">
+									<input type="text" class="form-control pubkey">
+								</div>
+								<a href="javascript:;" class="pubkeyAdd"><span class="glyphicon glyphicon-plus"></span></a>
+								<br><br>
+							</div>
+						</div>
+
+						<div>
+							<input type="checkbox" id="c1" name="cc" checked />
+							<label for="c1">Sort PubKeys Alphabetically?</label>
+						</div>
+
+						<br>
+
+						<p>Enter the amount of signatures required to release the (doge)coins</p>
+						<div class="row">
+							<div class="col-xs-3">
+								<select id="releaseCoins" class="form-control">
+									<option>1</option>
+									<option selected>2</option>
+									<!--option>3</option>
+									<option>14</option>
+									<option>15</option-->
+								</select>
+							</div>
+						</div>
+
+						<br>
+
+						<div id="multiSigErrorMsg" class="alert alert-danger" style="display:none;"></div>
+
+						<div class="alert alert-success hidden" id="multiSigData">
+							<label>Address</label>
+							<p>Payment should be made to this Ðogecoin address:</p>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="input-group">
+										<input type="text" class="form-control address" value="" readonly>
+										<span class="input-group-btn">
+											<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<label>Ðogecoin Redeem Script</label>
+							<p>This script should be <i>saved and should be shared with all the participants before a payment is made</i>, so they may validate the authenticity of the address, it will also be used later to release the Ðogecoins.</p>
+							<textarea class="form-control script" style="height:160px" readonly></textarea>
+							<label>Much Shareable URL</label>
+							<input type="text" class="scriptUrl form-control" readonly>
+						</div>
+
+						<input type="button" class="btn btn-primary" value="Create new Multisig (offline is OK)" id="newMultiSigAddress">
+						<br>
+					</div>
+
+                    <div class="tab-pane tab-content" id="newTimeLocked">
+                        <h2>New Time Locked Address <small>Coins can be released only after a certain date</small></h2>
+
+                        <div class="row">
+
+                            <div class="col-md-11">
+				<p>Use <i><a href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" target="_blank">OP_CHECKLOCKTIMEVERIFY</a></i> (OP_HODL) to create a time locked address where the funds are unspendable until a set date and time has passed.</p>
+                                <p>Public keys can be <a href="#newAddress">generated in your browser</a> or from your Ðogecoin client</a>.</p>
+                                <p>Enter the public key that will be able to unlock the funds after the a certain date.
+                            </div>
+
+                            <div class="col-md-1">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-horizontal">
+                                <div class="col-xs-12">
+                                    <input id="timeLockedPubKey" type="text" class="form-control pubkey">
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Enter the date and time required to release the coins: </p>
+                        <div class="row">
+                            <div class='col-md-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='timeLockedDateTimePicker'>
+                                        <input type='text' class="form-control" placeholder="MM/DD/YYYY hh:mm" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div id="timeLockedErrorMsg" class="alert alert-danger" style="display:none;"></div>
+
+                        <div class="alert alert-success hidden" id="timeLockedData">
+                            <label>Address</label>
+                            <p>Payment should be made to this address:</p>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control address" value="" readonly>
+                                        <span class="input-group-btn">
+                                            <button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <label>Redeem Script</label>
+                            <p>This script should be <i>saved and should be shared with all the participants before a payment is made</i>, so they may validate the authenticity of the address, it will also be used later to release the Ðogecoins.</p>
+                            <textarea class="form-control script" style="height:160px" readonly></textarea>
+                            <label>Shareable URL</label>
+                            <input type="text" class="scriptUrl form-control" readonly>
+                        </div>
+
+                        <input type="button" class="btn btn-primary" value="Submit" id="newTimeLockedAddress">
+                        <br>
+                    </div>
+
+					<div class="tab-pane tab-content" id="newHDaddress2">
+						<h2>The webpage formerly known as New HD Address </h2>
+						<p>(redeem page in training)</p>
+
+						<label>Enter Your Redeem Key here:(this is newHDaddress actually) such recalibrate</label>
+						<!--textarea type="text" id="dogeScript3" class="form-control" style="height:125px"></textarea-->
+						<!--input type="button" class="btn btn-primary" value="Moon" id="redeemit"-->
+					</div>
+					<div class="tab-pane tab-content" id="redeemMultiSig">
+						<a href="http://dogecoinmultisig.org" ><img src="images/dcmslogo3.jpg" style="height:180px" ></a>
+						<h2>WITHDRAW <small>(redeem)</small> from your Multisig!</h2>
+						<input type="button" class="btn btn-warning btn-xs" value="Reset Everything and Start Over" 	id="redeemVerifyReset">
+						<p><b>Multisig Address to pay from:</b></p>
+						<textarea type="text" id="dogeScript7" class="form-control" rows="1" cols="50"></textarea>
+						<b><p id="getWalletBalance"></p></b>
+						<b><p id="getWalletUCBalance"></p></b>
+
+                                                <div id="walletRefreshBox" class="active">
+							<input type="button" class="btn btn-success btn-sm" value="Refresh" id="walletRefresh">
+							<div class="input-group">
+								<input id="newDogecoinAddress" type="text" class="form-control address" value="" readonly>
+								<span class="input-group-btn">
+									<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode">
+									<span class="glyphicon glyphicon-qrcode"></span>
+									</button>
+								</span>
+							</div>
+							<p><b>Redeem Script:</b></p>
+							<textarea type="text" id="dogeScript4" class="form-control" rows="3" cols="50"></textarea>
+                                                </div>
+
+						<p><b>Destination Address to pay to:</b></p>
+						<textarea type="text" id="dogeScript5" class="form-control" rows="1" cols="50"></textarea>
+						<p><b>Amount:</b></p>
+						<textarea type="text" id="dogeScript6" class="form-control" rows="1" cols="20"></textarea>
+						<p><small><small>(the mining fee will be added on top of all this, unless full amount, then it's subtracted!)</small></small></p>
+
+                                                <div class="alert alert-info active">
+						<!--p><b>Provide your Private Suite Key or One Private Signature</b> <small>(or check the box so you can sign offline)</small><b>:</b></p-->
+						<p><b>Your Private Suite Key or One Private Signature </b> <small>(or check the box so you can sign offline)</small><b>:</b></p>
+                                                        <input id="redeemPrivateKey" type="password" class="form-control privkey" value="" >
+                                                                  <span class="input-group-btn">
+                                                                           <button class="showKey btn btn-default" type="button">Show</button>
+                                                                  </span>
+							<div>
+								<input type="checkbox" id="skipSigning" name="acc" unchecked />
+								<label for="skipSigning">Do not sign the transaction (for offline use)</label>
+							</div>
+                                                </div>
+
+                                                <div id="nextRedeemBox" class="alert alert-warning active">
+                                                        <label>When all those are filled out, press this button:</label>
+							<input type="button" class="btn btn-primary" value="NEXT" id="redeemit">
+                                                </div>
+						
+                                                <div id="pleaseWaitBox" class="alert alert-warning hidden">
+							<br>
+                                                        <label>Please Wait....</label>
+							<p><small>(this may take a moment for larger transactions)</small></p>
+							<br>
+                                                </div>
+						
+                                                <div id="transactionCreate2" class="alert alert-success hidden">
+                                                        <label>A Successful Sign</label>
+                                                        <button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" 
+								style="float:right;"><span class="glyphicon glyphicon-qrcode"></span>
+							</button>
+
+                                                        <p>The dogecoin transaction below has been generated and encoded. It can be broadcasted once it has been signed. </p>
+                                                        <br>
+                                                        <textarea class="form-control" style="height:150px" readonly></textarea>
+
+							<!--input type="button" class="btn btn-primary" value="Go To Verify this!" id="redeemVerifyBtn"-->
+                                                        <p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
+                                                </div>
+
+                                                <div id="signedSuccessBox" class="alert alert-success hidden">
+                                                        <label>Successful Sign</label>
+                                                        <p>The dogecoin transaction below has been signed one time.</p>
+                                                        <br>
+                                                        <textarea class="form-control" style="height:150px" readonly></textarea>
+
+							<input type="button" class="btn btn-primary" value="BROADCAST (online)" id="redeemVerifyBtn1x">
+							<input type="button" class="btn btn-info" value="MAKE SIGN URL (or sign again)" id="redeemVerifyBtn2x">
+							<input type="button" class="btn btn-success" value="MAKE VERIFY URL" id="redeemVerifyBtn4x">
+                                                </div>
+                                                <div id="signedSuccessBox2" class="alert alert-success hidden">
+                                                        <label>Another Successful Sign!</label>
+                                                        <p>The dogecoin transaction below has been signed twice.</p>
+							<p>Click the BROADCAST button to send the transaction to the dogecoin network.</p>
+							<p><b>This is the last step</b></p>
+                                                        <br>
+                                                        <textarea class="form-control" style="height:150px" readonly></textarea>
+							<input type="button" class="btn btn-primary" value="BROADCAST (online)" id="redeemVerifyBtn3x">
+							<!--input type="button" class="btn btn-primary" value="WHAT'S NEXT (hint: get another signature)" id="redeemVerifyBtn2x"-->
+                                                </div>
+                                                <div id="withdrawlFailBox" class="alert alert-danger hidden">
+                                                        <br>
+                                                        <label>The Broadcast has failed</label>
+                                                        <p>Sorry. Something is not right.</p>
+							<p>Here's some ideas for fixing this:</p>
+							<p>Did you sign with the correct password matching this account?</p>
+                                                        <p>Are any fields missing from your form? Are the fields as expected? </p>
+							<p><small>(ie: Didn't put the amount where the To Addr: should be, etc)</small></p>
+							<p>Is there enough money in the account to clear the transaction?</p>
+							<p><b>Please try again.</b></p>  
+                                                </div>
+
+                                                <div id="withdrawlSuccessBox" class="alert alert-success hidden">
+                                                        <br>
+                                                        <label>This transaction has been successfully sent to the Dogecoin network!</label>
+                                                        <p>The dogecoin transaction ID (txid) is your receipt.</p>
+							<p>You can view the details for this transaction at a place such as chain.so</p>
+							<p> Please wait a few minutes for the confirmation.</p>
+                                                        <textarea class="form-control" style="height:50px" readonly></textarea>
+                                                        <br>
+                                                </div>
+
+
+						<div id="rawTransactionStatus" class="alert hidden">
+						</div>
+					</div>
+
+					<div class="tab-pane tab-content" id="newTransaction">
+						<h2>Transaction <small>Create a new transaction</small></h2>
+						<p>Use this page to create a raw transaction</p>
+
+						<!--b>Address, WIF key or Multisig Redeem Script</b>:
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-info qrcodeScanner" type="button" data-toggle="modal" data-target="#modalQrcodeScanner" forward-result="#redeemFrom"><span class="glyphicon glyphicon-camera"></span></button>
+							</span>
+							<input type="text" id="redeemFrom" class="form-control" value="">
+							<span class="input-group-btn">
+								<button id="redeemFromBtn" class="btn btn-info" type="button">Load</button>
+							</span>
+						</div-->
+
+						<br>
+
+						<div class="hidden alert alert-danger" id="redeemFromStatus"></div>
+
+						<div class="hidden alert alert-info" id="redeemFromAddress"></div>
+
+						<div>
+							<!--a href="javascript:;" id="optionsCollapse"><div class="well well-sm"><span class="glyphicon glyphicon-collapse-down" id="glyphcollapse"></span> Advanced Options</div></a-->
+
+							<div class="hidden" id="optionsAdvanced">
+
+								<label>Clear Inputs</label>
+								<p class="checkbox">
+									<label><input type="checkbox" id="clearInputsOnLoad" class="checkbox-inline" checked> Clear existing inputs when new inputs are loaded.</label>
+								</p>
+
+								<hr>
+
+								<label>Null Data</label> <span class="text-muted text-normal">(80 byte limit, <i>40 bytes recommended</i>)</span>
+								<p class="checkbox">
+									<label><input type="checkbox" id="opReturn" class="checkbox-inline"> Allow data to be sent within the transaction and stored in the blockchain by using <a href="https://bitcoin.org/en/developer-guide#null-data" target="_"blank">OP_RETURN</a>.</label>
+									<div class="text-muted">When using this option you may enter a hex string or address into the address field on the output tab.</div>
+								</p>
+
+								<hr>
+
+								<label>Lock Time</label>
+								<p>The <a href="https://bitcoin.org/en/developer-guide#locktime-and-sequence-number">locktime</a> indicates the earliest time a transaction can be added to the block chain.</p>
+								<input type="text" class="form-control" value="0" id="nLockTime">
+
+								<hr>
+
+
+								<label>Replace By Fee (RBF)</label>
+								<p class="checkbox">
+									<label><input type="checkbox" id="txRBF" class="checkbox-inline"> Make this a <a href="https://en.bitcoin.it/wiki/Transaction_replacement" target="_blank">RBF transaction</a>.</label>
+								</p>
+
+								<hr>
+
+								<label>Network</label>
+								<p>The <a href="#settings">settings</a> page can be used to select alternative networks of which you can retrieve your unspent outputs and broadcast a signed transaction into.</p>
+
+								<hr>
+							</div>
+						</div>
+
+						<ul class="nav nav-tabs" id="putTabs">
+							<li class="active"><a href="#txoutputs" data-toggle="tab">Outputs <small>(<span id="totalOutput">0.00000000</span>)</small></a></li>
+							<li><a href="#txinputs" data-toggle="tab">Inputs <small>(<span id="totalInput">0.00000000</span>)</small></a></li>
+						</ul>
+
+						<br>
+
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="txoutputs">
+								<p>Enter the address and amount you wish to make a payment to.</p>
+								<div class="row">
+									<div class="col-xs-8">
+										<label><abbr title="Address to send to">Address</abbr></label>
+									</div>
+									<div class="col-xs-3">
+										<label><abbr title="Amount to send">Amount</abbr></label>
+									</div>
+									<div class="col-xs-1">
+									</div>
+								</div>
+
+								<div id="recipients">
+									<div class="row recipient">
+										<div class="col-xs-8">
+											<input type="text" class="form-control address" placeholder="1">
+										</div>
+										<div class="col-xs-3">
+											<input type="text" class="form-control amount" placeholder="0.00">
+										</div>
+										<div class="col-xs-1">
+											<a href="javascript:;" class="addressAddTo"><span class="glyphicon glyphicon-plus"></span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="tab-pane fade" id="txinputs">
+								<p>Enter the details of inputs you wish to spend.</p>
+								<div class="row">
+									<div class="col-xs-5">
+										<label><abbr title="Transaction ID">Transaction ID:</abbr></label>
+									</div>
+									<div class="col-xs-1">
+										<label><abbr title="Transaction Input Number">N</abbr></label>
+									</div>
+									<div class="col-xs-3">
+										<label>Script</label>
+									</div>
+									<div class="col-xs-2">
+										<label><abbr title="This field is for accounting purposes only - the entire input will be spent!">Amount</abbr></label>
+									</div>
+									<div class="col-xs-1">
+									</div>
+								</div>
+
+								<div id="inputs">
+									<div class="row inputs">
+										<div class="col-xs-5">
+											<input type="text" class="form-control txId" placeholder="">
+										</div>
+										<div class="col-xs-1">
+											<input type="text" class="form-control txIdN" placeholder="0">
+										</div>
+										<div class="col-xs-3">
+											<input type="text" class="form-control txIdScript">
+										</div>
+										<div class="col-xs-2">
+											<input type="text" class="form-control txIdAmount" placeholder="0.00">
+										</div>
+										<div class="col-xs-1">
+											<a href="javascript:;" class="txidAdd"><span class="glyphicon glyphicon-plus"></span></a>
+											<a href="javascript:;" class="txidClear"><span class="glyphicon glyphicon-minus"></span></a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<br>
+
+						<div class="row">
+							<div class="col-xs-3">
+								<label><abbr title="What is not spent will be used as a transaction fee">Transaction Fee</abbr></label>
+								<input type="text" id="transactionFee" class="form-control" value="0.0000" readonly>
+							</div>
+						</div>
+
+						<br>
+
+						<div id="transactionCreateStatus" class="alert alert-danger hidden"></div>
+
+						<div id="transactionCreate" class="alert alert-success hidden">
+							<label>Transaction</label>
+							<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" style="float:right;"><span class="glyphicon glyphicon-qrcode"></span></button>
+
+							<p>The transaction below has been generated and encoded. It can be broadcasted once it has been signed.</p>
+							<br>
+			                                <textarea class="form-control" style="height:150px" readonly></textarea>
+
+							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
+						</div>
+
+						<input type="button" value="Submit" class="btn btn-primary" id="transactionBtn">
+
+						<br>
+					</div>
+
+					<div class="tab-pane tab-content" id="cwhome">
+						<a><img src="images/dcmslogo3.jpg" style="height:180px" ></a>
+<p><strong>THOMAS E. CHAMBERLAIN </strong><strong>--</strong><strong>CV</strong></p>
+<p>&nbsp; </p>
+<p><strong><span style="text-decoration: underline;">SYNOPSIS</span></strong></p>
+<p>&nbsp;</p>
+<p>Thomas Chamberlain has been an independent research scientist in theoretical physics since ~1970 and in mathematical psychology and economics (applied psychology) since 1981. Over this interval until recently he was employed as an engineer at Boeing, Raytheon, and other aerospace companies.</p>
+<p>In 1993 he finalized the canonical human behavior equation and in 1997 he began presenting papers at international economics conferences. His 2003 contribution &ldquo;Does uneven expected risk promote poverty and instability?&rdquo; provided the analytical basis or justification for international commerce damping and human recapitalization, two increasingly prominent 21st-century approaches for arresting and reversing the fateful concentration of wealth and income in a small percentage of the population. The related Discretionary-Power Principle of Justice was also introduced in the 2003 paper. More recently (2011) he has prepared a deeper mathematical system that unites neoclassical and Gossenian micro-economics, two systems in essential conflict since the Marginal Revolution of the 1870s.</p>
+<p>In physics his studies over the years focused on conceptualizing relativity and quantum mechanics (to the extent either may be possible). In 2012 he decided to concentrate on basic physics&mdash;suspending psychology and economics&mdash;with the goal of eventually uniting anisotropic (light-velocity) relativity and quantum theory. Because orthodox relativity rejects anisotropic light-velocity this effort immediately concentrated on special relativity to the neglect of quantum theory. In 2014 special relativity (and therefore general relativity) was found incomplete due to the isotropic c=constant postulate. The resulting paper &ldquo;Fundamentally anisotropic light-velocity at the foundation of classical physics&rdquo; was presented at the 2015 June AAAS-PD conference in San Francisco. (Original title changed).</p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp; <strong><span style="text-decoration: underline;">Far-Field Gravitation</span></strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On the basis of a belief, from well before 2012, that one-way (near) infinite light-speed was crucially germane to deepening <em>classical</em> physics theory, almost immediately after the San Francisco conference (2015 July) he ascertained that Hubble expansion and Einstein&rsquo;s same-motion acceleration (1907) are essentially related (in some manner)&mdash;inasmuch as equating the Hubble expansion, V=rH, to the similar expansion from S-M acceleration (in the limit V=c) with the latter as a free parameter yielded a=cH=6.3E-10 m/s<sup>2</sup>, which is within an order of Milgrom&rsquo;s universal acceleration constant a<sub>0</sub>=1.2E-10 m/s<sup>2</sup>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Another nearly seven months (2016 February) were required to derive Milgrom&rsquo;s expression for far-field star dynamics within &ldquo;state-of-art&rdquo; relativity physics (which extends standard relativity physics to formally recognize anisotropic light-speed&mdash;see Rizzi et al. (2008) and the AAAS-PD/San Francisco paper). Two new inductive advances enabled this theoretical advance: (1) conjunction of one-way infinite light-speed and the Hubble expansion to yield the corresponding time dilation; followed by (2) combining this time-dilation with its counterpart emerging from the Schwarzschild solution. The result was the relationship V<sub>f</sub><sup>2</sup>=(GM/r<sub>S</sub>)<sup>1/2</sup>(r<sub>H</sub>cH<sub>0</sub>)<sup>1/2</sup> &ndash; departing from Milgrom&rsquo;s functionally equivalent V<sub>f</sub><sup>2</sup>=(GMa<sub>0</sub>)<sup>1/2</sup> by the Schwarzschild-based radius r<sub>S</sub> and the Hubble-expansion based r<sub>H</sub>, which, being equal, cancel out.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Further developments over the next few months towards a complete deepening of the Einstein Field Equations were eventually suspended in order to prepare for the rapidly approaching AAAS-PD Conference in San Diego (14-17 June 2016), where the derivation of Milgrom&rsquo;s expression with comparison against astronomical &ldquo;far-field&rdquo; star and gas velocities was presented.</p>
+<p>&nbsp;</p>
+<p><strong><span style="text-decoration: underline;">ACADEMICS AND CHRONOLOGY</span></strong></p>
+<p>&nbsp;</p>
+<p><strong><em><span style="text-decoration: underline;">EDUCATION</span></em></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PhD, University of California, Berkeley, 1972.</p>
+<p>MS, Massachusetts Institute of Technology, 1966.</p>
+<p>BS, Boston University, 1961</p>
+<p>&nbsp;<strong><em><span style="text-decoration: underline;">ENDEAVOR</span></em></strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Research scientist in physics, psychology, and economics.</p>
+<p>&nbsp;</p>
+<p><strong><em><span style="text-decoration: underline;">CHRONOLOGY</span></em></strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1970 (Approx.): Initiated independent study of relativity and quantum mechanics.</p>
+<p>1981: Initiated independent study of mathematical behavior and economics.</p>
+<p>1993: Completed the canonical Gossen Equation representing the individual&rsquo;s subjective-utility based expectational plan.</p>
+<p>1997: Initial presentation at an international economics conference of the &ldquo;instant-utility&rdquo; approach to mathematical behavior/economics. (72<sup>nd</sup> annual conference of the Western Economics Association International conference, Seattle.)</p>
+<p>2003: Initial presentation of the theory-based poverty-reduction recommendations and the Discretionary-Power Principle of Justice (5th Pacific Rim Allied Organizations Conference, Taipei.)</p>
+<p>2005: Initial statement recognizing the permanent nuclear detente between great powers with its potentially beneficial effect on economic development. (6th Pacific Rim Allied Organizations Conference, Hong Kong.)</p>
+<p>2005: Addressed the pre-eminence of poverty-reduction versus social and economic rights. (61st International Atlantic Economic conference, Berlin; later presented at the 47th Congress of the European Regional Science Association, Paris.)</p>
+<p>2006: Addressed how socialism and capitalism may be united in the goal of reversing and defeating poverty. (62nd International Atlantic EconomicConference, Philadelphia; later presented at the 7th Pacific Rim Allied Organizations Conference, Beijing)</p>
+<p>2007: Extended the minimum wage scope to include human recapitalization as a necessary step for defeating poverty. (64th International Atlantic Economic Conference; Savannah, Georgia.)</p>
+<p>2008: Recommended for a lasting d&eacute;tente that the West should promote international-commerce damping and human recapitalization as its domestic/international policy while the East should make accommodating adjustments. (65th International Atlantic Economic Conference, Warsaw.)</p>
+<p>2009: Further recommendation of the alternative of human recapitalization and international commerce damping as a revision or improvement of the (now receding) Washington Consensus. (67th International Atlantic Economic Conference, Rome.)</p>
+<p>2009: Letter-critique of mainstream economics published in the Financial Times (27 April), with recommendation for deeper knowledge to promote wellbeing and socioeconomic stability.</p>
+<p>2009: Letter published in the Financial Times (18 December) on the crucial need for competent and true mathematical economics to help defeat poverty and achieve a sustainable world.</p>
+<p>2010: Prepared historical overview of the development of the Gossenian approach to mathematical economics along with the application of this approach towards understanding and reversing poverty. (69th International Atlantic Economic Conference, Prague.)</p>
+<p>2011: Introduced a new constraint on the neoclassical utility function thereby uniting neoclassical and Gossenian theory and opening the door for conciliation of the Austrian and neoclassical traditions. As applications, Walras&rsquo;s substitution equations are completed and marginal productivities of capital and labor are functionally related to intertemporal discounting. (71st International Atlantic Economic Conference, Athens.)</p>
+<p>2012: Began intensive effort to arrive at a substantive understanding of relativity physics that accommodates anisotropic light-velocity.</p>
+<p>2014: Recognized the fundamental nature of anisotropic light-velocity in classical physics leading to the multi space-time condition in accordance with the dichotomy between Einstein&rsquo;s light-pulse versus same-motion synchronization conventions.</p>
+<p>2015: Completed the initial paper on the subject&mdash;&ldquo;Fundamentally anisotropic light-velocity at the foundation of classical physics&rdquo; (new title)&mdash;and presented at the 2015 June AAAS-PD conference in San Francisco.</p>
+<p>2015 June: Initiated revision of general relativity to accommodate anisotropic light-velocity.</p>
+<p>2016 February: Derived Milgrom's empirical V<sub>f</sub>=(GMa<sub>0</sub>)<sup>1/4</sup> as purely theoretical V<sub>f</sub>=(GMcH<sub>0</sub>)<sup>1/4</sup> within relativity physics accounting for the cosmological principle.</p>
+<p>2016 June: Letter published in the Financial Times (2 June) recommending <span style="text-decoration: underline;">conditional</span> basic income (properly done) to grow human capital thereby promoting "the basic economic right, the Right to Life", where the resulting boost to economic growth yields increased tax revenue to keep government finances in balance. &nbsp;</p>
+<p>2016 June: Presented a theoretical derivation of Milgrom's empirical law at the annual AAASPD Conference (San Diego), which advances general relativity breakdown over dark matter as the explanation for "missing matter" throughout the cosmos. (Completed paper to follow.)</p>
+					</div>
+					<div class="tab-pane tab-content" id="economics">
+						<a><img src="images/dcmslogo3.jpg" style="height:180px" ></a>
+						<h2>Selected Economics Papers</h2>
+						<table>
+						  <tr>
+						    <th>Article Title</th>
+						    <th>Author</th>
+						  </tr>
+						<tr>
+						 <td>
+						 <a href="papers/080712UnevenExpectedRisk.pdf">Uneven Expected Risk</a>
+						 </td>
+						 <td>  Thomas E. Chamberlain</td>
+						</tr>
+						<tr>
+						 <td>
+						 <a href="papers/Instant_Utility%20Approach--9-16-11a.pdf">Instant Utility Approach to the Social Sciences</a>
+						 </td>
+						 <td>  Thomas E. Chamberlain</td>
+						</tr>
+						<tr>
+						 <td>
+						 <a href="papers/Chamberlain-Paper_ERSA-Paris_2007.pdf">Relationship of Economic Stability to Social and Economic Rights</a>
+						 </td>
+						 <td>  Thomas E. Chamberlain</td>
+						</tr>
+						<tr>
+						 <td>
+						 <a href="papers/070412SocialismVsCapitalismRev3.pdf">Socialism vs. Capitalism</a>
+						 </td>
+						 <td>  Thomas E. Chamberlain</td>
+						</tr>
+						<tr>
+						 <td>
+						 <a href="papers/090703World%20Bank%20Growth%20Report--Assessment%20and%20Extension.pdf">World Bank Growth Report - Assessment and Extension</a>
+						 </td>
+						 <td>  Thomas E. Chamberlain</td>
+						</tr>
+						<tr>
+						 <td>
+						 <a href="papers/GossenRev5a.pdf">History of the Gossen Equation</a>
+						 </td>
+						 <td>  Thomas E. Chamberlain</td>
+						</tr>
+						<tr>
+						 <td>
+						 <a href="papers/Unified_Micro-Macro_Economic_Theory.pdf">Unified Micro/Macro Economic Theory</a>
+						 </td>
+						 <td>  Thomas E. Chamberlain</td>
+						</tr>
+						</table>
+					</div>
+					<div class="tab-pane tab-content" id="physics">
+						<a><img src="images/dcmslogo3.jpg" style="height:180px" ></a>
+						<h2>Selected Physics Papers and Conference Charts</h2>
+                                                        <!--label>Lookie it's a new table:</label-->
+						<table>
+						  <tr>
+						    <th>Article Title</th>
+						    <th>Author</th>
+						  </tr>
+						  <tr>
+<td>
+<a href="papers/Fundamentally%20Anisotropic%20Light-Velocity%20at%20the%20Foundation%20of%20Classical%20Physics.pdf"> Fundamentally Anisotropic Light-Velocity at the Foundation of Classical Physics</a>
+</td>
+						    <td>  Thomas E. Chamberlain</td>
+						  </tr>
+						  <tr>
+<td>
+<a href="papers/AAAS-PD%20PRESENTATION%20CHARTS---Anisotropic%20Light%20Velocity.pdf">AAAS-PD PRESENTATION CHARTS--Anisotropic Light Velocity</a>
+</td>
+						    <td>  Thomas E. Chamberlain</td>
+						  </tr>
+						  <tr>
+<td>
+<a href="papers/AAAS-PD%20PRESENTATION%20CHARTS--Far%20Field%20Gravitation.pdf">AAAS-PD PRESENTATION CHARTS--Far Field Gravitation</a>
+</td>
+						    <td>  Thomas E. Chamberlain</td>
+						  </tr>
+						</table>
+						<br>
+
+						<div class="hidden verifyData" id="verifyRsData">
+							<h4>The Wonderful Ðogecoin Redeem Script</h4>
+							<p><span style="float:right"><a href="javascript:;" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The redeem script above has been decoded</p>
+
+							<div class="hidden" id="verifyRsDataMultisig">
+                                <label>Multi Signature Address</label>
+    							<div class="row">
+    								<div class="col-lg-6">
+    									<div class="input-group">
+    										<input type="text" class="form-control address multisigAddress" value="" readonly>
+    										<span class="input-group-btn">
+    											<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+    										</span>
+    									</div>
+    								</div>
+    							</div>
+    							<label>Required Signatures</label>
+    							<p class="signaturesRequired">?</p>
+    							<label>Signatures Required from</label>
+    							<table class="table table-striped table-hover">
+    								<tbody>
+    								</tbody>
+    							</table>
+                            </div>
+
+                            <div class="hidden" id="verifyRsDataHodl">
+                                <label>Hodl Address</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control address" value="" readonly>
+                                            <span class="input-group-btn">
+                                                <button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <label>Required Signature</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control address pubkey" value="" readonly>
+                                            <span class="input-group-btn">
+                                                <button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <label>Unlock Time</label>
+                                <div class="row">
+                                    <div class='col-md-4'>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control date" value="" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+                            </div>
+						</div>
+
+						<div class="hidden verifyData" id="verifyTransactionData">
+							<h4>Transaction Script</h4>
+							<p><span style="float:right"><a href="" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The above script has been decoded</p>
+							<div><b>Version</b>: <span class="transactionVersion"></span></div>
+							<div><b>Transaction Size</b>: <span class="transactionSize"></span></div>
+							<div><b>Lock time</b>: <span class="transactionLockTime"></span></div>
+							<div class="transactionRBF"><b>RBF</b>: This is a <a href="https://en.bitcoin.it/wiki/Transaction_replacement">replace by fee</a> transaction!</div>
+
+							<hr>
+
+							<label>Inputs</label>
+							<table class="table table-striped table-hover ins">
+								<thead>
+									<tr style="font-weight:bold;">
+										<td><abbr title="the transaction id">Txid</abbr></td><td><abbr title="index id of the the transaction">N</abbr></td><td><abbr title="transaction script">Script</abbr></td><td><abbr title="is input signed?">Signed?</abbr></td><td><abbr title="is transaction a multisig transaction?">MultiSig?</abbr></td>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+
+							<label>Outputs</label>
+							<table class="table table-striped table-hover outs">
+								<thead>
+									<tr style="font-weight:bold;">
+										<td><abbr title="address the funds are being sent to">Address</abbr></td><td><abbr title="the amount the address is being sent">Amount</abbr></td><td><abbr title="the script of the transaction">Script</abbr></td>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							<div class="alert alert-success" id="verifyBtnControl">
+								<p>Choose Wisely: this part is under construction.</p>
+								<input type="button" value="BROADCAST (online)" class="btn btn-success" id="verifyBtn2x">
+								<input type="button" value="SIGN this (on/offline)" class="btn btn-info" id="verifyBtn3x">
+							</div>
+						</div>
+
+						<div class="hidden verifyData" id="verifyPrivKey">
+							<h4>WIF key</h4>
+							<p>The above wif key has been decoded</p>
+							<p><b>Address</b>: <input type="text" class="form-control address" readonly></p>
+							<p><b>Public key</b>: <input type="text" class="form-control pubkey" readonly></p>
+							<p><b>Private key</b>: <input type="text" class="form-control privkey" readonly></p>
+							<p><b>Is compressed</b>: <span class="iscompressed"></span></p>
+
+						</div>
+
+						<div class="hidden verifyData" id="verifyPubKey">
+							<h4>Public key</h4>
+							<p><span style="float:right"><a href="" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The above public key has been encoded to its address</p>
+							<p><b>Address</b>: <input type="text" class="form-control address" readonly></p>
+						</div>
+
+						<div class="hidden verifyData" id="verifyHDaddress">
+							<h4>HD Address</h4>
+							<p><span style="float:right"><a href="" target="_blank" class="verifyLink" title="Link to this page"><span class="glyphicon glyphicon-link"></span></a></span>The key <small><span class="hdKey hidden"></span></small> has been decoded</p>
+							<div class="row">
+								<div class="col-md-2">
+									<b>Type</b><br>
+									<span class="key_type"></span>
+								</div>
+
+								<div class="col-md-5">
+									<b>Chain Code</b><br>
+									<input type="text" class="form-control chain_code" value="" readonly>
+								</div>
+
+
+								<div class="col-md-5">
+									<b>Key</b><br>
+									<input type="text" class="form-control hdwifkey" value="" readonly>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-3">
+									<b>Version</b><br>
+									<input type="text" class="form-control version" value="" readonly>
+								</div>
+
+								<div class="col-md-3">
+									<b>Parent FingerPrint</b><br>
+									<input type="text" class="form-control parent_fingerprint" value="" readonly>
+								</div>
+
+								<div class="col-md-3">
+									<b>Depth</b><br>
+									<input type="text" class="form-control depth" value="" readonly>
+								</div>
+
+								<div class="col-md-3">
+									<b>Index</b><br>
+									<input type="text" class="form-control child_index" value="" readonly>
+								</div>
+							</div>
+
+							<div class="row">
+							</div>
+
+							<hr>
+
+							<h4>Key Derivation</h4>
+							<p>The path of key derivation</p>
+
+							<div class="row">
+								<div class="col-md-8">
+									<b>Path</b><br>
+									<select class="form-control">
+										<option>Simple: m/i</option>
+									</select>
+								</div>
+
+								<div class="col-md-2">
+									<b>Index (Start)</b><br>
+									<input type="text" class="form-control derivation_index_start" value="0">
+								</div>
+
+								<div class="col-md-2">
+									<b>Index (End)</b><br>
+									<input type="text" class="form-control derivation_index_end" value="1">
+								</div>
+
+							</div>
+
+							<hr>
+							<h4>Keys</h4>
+
+							<p>Keys derived from the hd address provided</p>
+
+							<div class="derived_data">
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr><td><b>Index</b></td><td><b>Address</b><td><b>Private Key (WIF)</b></td></td><td><b>Extended xPub</b></td><td><b>Extended xPrv</b></td></tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+
+							<br>
+						</div>
+
+						<div id="verifyStatus" class="alert alert-danger hidden"><span class="glyphicon glyphicon-exclamation-sign"></span> Unable to decode</div>
+
+						<!--input type="button" value="Verify" class="btn btn-primary" id="verifyBtn"-->
+						<br>
+					</div>
+
+					<div class="tab-pane tab-content" id="broadcast">
+						<a href="http://dogecoinmultisig.org" ><img src="images/dcmslogo3.jpg" style="height:180px" ></a>
+						<h2>Broadcast Transaction <small>into the Ðogecoin network</small></h2>
+						<a href="#settings" style="float:right;"><span class="glyphicon glyphicon-cog"></span></a>
+						<p>Enter your txid here:</p>
+						<textarea type="text" id="dogeScript3" class="form-control" style="height:125px"></textarea>
+						
+						<div>
+						<input type="button" class="btn btn-primary" value="BROADCAST (online)" id="testola"-->
+						</div>
+                                                <div id="broadcastPleaseWaitBox" class="alert alert-warning hidden">
+							<br>
+                                                        <label>Please Wait....</label>
+							<p><small>(this may take a moment for larger transactions)</small></p>
+							<br>
+                                                </div>
+						<br>
+						<div id="rawTransactionStatus" class="alert hidden">
+						</div>
+                                                <div id="broadcastFailBox" class="alert alert-danger hidden">
+                                                        <label>Sorry this Broadcast has Failed</label>
+                                                </div>
+                                                <div id="broadcastSuccessBox" class="alert alert-success hidden">
+                                                        <label>This transaction has been successfully sent to the Dogecoin network!</label>
+                                                        <p>The dogecoin transaction ID (txid) is your receipt.</p>
+							<p>You can view the details for this transaction at a place such as chain.so</p>
+							<p> Please wait a few minutes for the confirmation.</p>
+                                                        <br>
+                                                        <textarea class="form-control" style="height:50px" readonly></textarea>
+                                                </div>
+					</div>
+
+
+					<div class="tab-pane tab-content" id="sign">
+						<a href="http://dogecoinmultisig.org" ><img src="images/dcmslogo3.jpg" style="height:180px" ></a>
+						<h2>Sign Transaction <small>once a transaction has been verified</small></h2>
+						<p>Once you have <a href="#verify">verified</a> a transaction you can sign and then <a href="#broadcast">broadcast</a> it into the network.</p>
+						<input type="button" value="clear" id="signClearBtn">
+
+						<div class="row">
+							<div class="col-md-12">
+								<label for="signPrivateKey">Private key</label>
+
+								<div class="input-group">
+									<input id="signPrivateKey" type="password" class="form-control" value="">
+									<span class="input-group-btn">
+										<button class="showKey btn btn-default" type="button">Show</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<br>
+
+						<div class="row">
+							<div class="col-md-12">
+								<textarea type="text" id="signTransaction" class="form-control" style="height:125px"></textarea>
+							</div>
+						</div>
+						<br>
+
+						<div class="alert alert-danger hidden" id="signedDataError">
+							<span class="glyphicon glyphicon-exclamation-sign"></span> There is a problem with one or more of your inputs, please check and try again
+						</div>
+
+                                                <div id="signPleaseWaitBox" class="alert alert-warning hidden">
+							<br>
+                                                        <label>Please Wait....</label>
+							<p><small>(this may take a moment for larger transactions)</small></p>
+							<br>
+                                                </div>
+						<div class="alert alert-success hidden" id="signedData">
+							<label>Signed transaction</label>
+							<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" style="float:right;">
+								<span class="glyphicon glyphicon-qrcode"></span>
+							</button>
+							<p>The above transaction has been signed:</p>
+                        				<textarea id="signDataText" class="form-control script" style="height:160px" readonly></textarea>
+							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
+							<input type="button" value="BROADCAST (online)" class="btn btn-primary" id="signBtn2x">
+							<input type="button" value="MAKE URL (ready to broadcast)" class="btn btn-success" id="signBtn3x">
+						</div>
+
+						<input type="button" value="Submit" class="btn btn-primary" id="signBtn">
+						<br>
+					</div>
+
+					<div class="tab-pane tab-content" id="dev">
+						<h2>Development <small>Javascript framework, API and more</small></h2>
+						<div class="alert alert-info">This section is currently under development and is subject to change.</div>
+						
+					</div>
+
+					<div class="tab-pane tab-content" id="about">
+						<h2>About <small>this website.</small></h2>
+						<p>This project was started with coinb.in open source source code. Please donate to them at: <a href="bitcoin:1CWHWkTWaq1K5hevimJia3cyinQsrgXUvg">1CWHWkTWaq1K5hevimJia3cyinQsrgXUvg</a> (BTC)</p>
+						<p>Version .090 (in development this statement last touched 20160715)</p>
+						<p>Compatible with dogecoin-qt</p>
+						<!--p>Github <a href="https://github.com/OutCast3k/coinbin/">https://github.com/OutCast3k/coinbin/</a></p-->
+						<!--p>TOR <a href="http://4zpinp6gdkjfplhk.onion">4zpinp6gdkjfplhk.onion</a></p-->
+						<h3>What is Ðogecoin?</h3>
+						<p>Ðogecoin is money with a dog on it.</p>
+						<h3>Information</h3>
+						<p>The Ðogecoin Network inflates at the rate of 5.2 Billion Ðogecoins created per year.</p>
+						<p>The Dogecoin Network can handle several times the volume than the Bitcoin Network, as measured in terms of transactions per second.</p>
+						<h3>Privacy</h3>
+						<p>Keys are generated on client side and we never ever see them. Nor do we want to see them. </p>
+						<h3>Thank You</h3>
+					</div>
+
+					<div class="tab-pane tab-content" id="settings">
+						<h2>Settings </h2>
+						<div class="row">
+							<div class="col-md-12">
+								<b>Network</b>: <br>
+								<p class="text-muted">Select which network you'd like to use for key pair generation.as long as it's Ðogecoin hahaha</p>
+								<!--select class="form-control" id="coinjs_coin"-->
+								<select class="form-control" id="moist">
+									<option value="dogecoin_mainnet" rel="0x1e;0x9e;0x16;0x019da462;0x019d9cfe;chain.so_dogecoin;chain.so_dogecoin">Dogecoin (mainnet)</option>
+									<option value="custom" rel="0x00;0x80;0x05;0x488b21e;0x488ade4;false;false">Custom</option>
+								</select>
+							</div>
+						</div>
+
+						<div id="settingsCustom" class="hidden">
+
+							<hr>
+
+							<div class="row">
+								<div class="col-md-4">
+									<b>Pub</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_pub">
+								</div>
+
+								<div class="col-md-4">
+									<b>Priv</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_priv">
+								</div>
+
+								<div class="col-md-4">
+									<b>Script Hash (multisig)</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_multisig">
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-6">
+									<b>HD Pub</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_hdpub">
+								</div>
+
+								<div class="col-md-6">
+									<b>HD Priv</b>: <br>
+									<input type="text" class="form-control coinjssetting" id="coinjs_hdprv">
+								</div>
+							</div>
+
+							<br>
+
+							<div class="alert alert-info"> <span class="glyphicon glyphicon-info-sign"></span> </div>
+
+						<hr>
+
+						<div class="row">
+							<div class="col-md-12">
+								<b>Broadcast</b>: <br>
+								<p class="text-muted">Select the network you wish to broadcast the transaction via</p>
+								<select class="form-control" id="coinjs_broadcast">
+									<option value="chain.so_dogecoinmainnet"> Chain.so (Ðogecoin mainnet)</option>
+								<!--	<option value="blockr.io_bitcointestnet"> Blockr.io (Bitcoin testnet)</option> -->
+								</select>
+							</div>
+						</div>
+							
+						<hr>
+
+						<div class="row">
+							<div class="col-md-12">
+								<b>Unspent outputs</b>: <br>
+								<p class="text-muted">Select the network you wish to retreive your unspent inputs from</p>
+								<select class="form-control" id="coinjs_utxo">
+									<option value="chain.so_dogecoin"> Chain.so (Ðogecoin)</option>
+								</select>
+							</div>
+						</div>
+
+						<br>
+
+						<div id="statusSettings" class="hidden alert">
+						</div>
+
+						<input type="submit" class="btn btn-primary" id="settingsBtn">
+
+					</div>
+
+					<br>
+					<p class="text-muted">This page uses javascript to generate your addresses and sign your transactions within your browser, this means we <i>never</i> receive your private keys, this can be independently verified by reviewing the source code on <a href="https://github.com/tomcarbon/dogecoinmultisig/" target="_blank">github</a> You can run this offline!</p>
+					<br>
+
+				</div>
+			</div>
+		</div>
+
+		<div id="footer">
+			<div class="container text-right">
+	        		<p class="text-muted">cw version .003</p>
+			</div>
+		</div>
+
+
+	<!-- wallet confirm send modal -->
+	<div class="modal fade" id="modalWalletConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Please confirm</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>You are about to send a transaction to the value of <span id="spendAmount">0.00</span> BTC</p>
+
+					<br>
+					<div id="walletSendConfirmStatus" class="alert alert-danger hidden"></div>
+
+					<div id="walletSendFailTransaction" class="alert alert-info hidden">
+						<b>Raw Transaction:</b>
+						<p>Below is a copy of the transaction we tried to submit</p>
+						<textarea class="form-control" readonly></textarea>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="walletConfirmSend">Send</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="confirmClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- wallet confirm send modal -->
+
+	<!-- qrcode modal -->
+	<div class="modal fade" id="modalQrcode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">qrcode</h4>
+				</div>
+
+				<div class="modal-body" align="center">
+					<div id="qrcode"></div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="qrCodeClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- qrcode modal -->
+
+	<!-- qrcode scanner modal -->
+	<div class="modal fade" id="modalQrcodeScanner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">qrcode scanner</h4>
+				</div>
+
+				<div class="modal-body" align="center">
+					<select id="videoSource" class="form-control"></select>
+					<div id="videoReaderError" class="hidden">Your browser does not offer camera support</div>
+					<video id="videoReader" muted autoplay style="width:100%;height:100%"></video>
+					<div id="qrcode-scanner-callback-to" class="hidden"></div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="qrScanClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- qrcode scanner modal -->
+
+	<!-- mediator modal -->
+	<div class="modal fade" id="modalMediator" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Transaction Mediation</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>You can add a public key when creating a <i>2-of-3 multi signature address</i> and for a low fee your mediator will help with the recovery of the funds should any disputes arise.</p>
+
+					<p>Should a dispute arise please contact the below address for further information</p>
+					<p>This is a pilot project for full-fledged arbitration support. We're open, but please excuse any hiccups while we learn and improve this new level of support.</p>
+					<div class="row">
+						<div class="col-md-5">
+							<label>Mediator:</label>
+
+							<!-- 
+								You need to contact us before adding your pubkey 
+								and submitting a pull request on github. 
+
+								format is: pubkey;email;fee
+							-->
+
+							<select id="mediatorList" class="form-control">
+								<option value="044ddc503c9523b8ad8f4f16d19219502b1990ff78a8fd318dcfe574453f5b3f0c5818e4bb8d48b93f1f1e45110f0f36e1191600fbefc1dcaab422ed7a62069d53;u/peoplma;1">
+								u/peoplma at r/dogecoin</option>
+								<option value="044ddc503c9523b8ad8f4f16d19219502b1990ff78a8fd318dcfe574453f5b3f0c5818e4bb8d48b93f1f1e45110f0f36e1191600fbefc1dcaab422ed7a62069d53;u/tomcarbon;1">
+								u/tomcarbon at r/dogecoin</option>
+							</select>
+						</div>
+
+						<div class="col-md-5">
+							<label>Address:</label> <span class="text-muted">(for disputes)</span>
+							<input id="mediatorEmail" type="text" class="form-control address" value="" readonly>	
+						</div>
+
+						<div class="col-md-2">
+							<label>Fee (%):</label> 
+							<input id="mediatorFee" type="text" class="form-control address" value="" readonly>	
+						</div>
+
+					</div>
+					<br>
+
+					<label>Public Key:</label>
+					<input id="mediatorPubkey" type="text" class="form-control address" value="" readonly>
+					<br>
+				</div>
+
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="button" id="mediatorAddKey">Add Public Key</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="mediatorClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mediator modal -->
+
+
+	<!-- warning (fee) modal -->
+	<div class="modal fade" id="modalWarningFee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"><b>Warning High Fee!</b></h4>
+				</div>
+
+				<div class="modal-body">
+					Please be aware that you have created a transaction with what seems to be a very adequate fee of <span id="modalWarningFeeAmount"></span> doge (provided it's one doge)
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="warningFeeClose">OK, I've got it!</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- warning (fee) modal -->
+
+	<div class="hidden" id="entropybucket"></div>
+	</body>
+</html>
