@@ -1,26 +1,55 @@
-html, body {
-	height: 100%;
-}
+		input[type=checkbox] {
+			width:25px; height:25px;
+			margin:		2px;
+		}
 
-body {
-	background-color:#ffffff;
+		#header {
+			background: rgba(100,100,255,0.3);			
+		}
+		
+		body {
+			background-color: #000;		
+			font-family: "Comic Sans MS", cursive, sans-serif;
+        	background-image: url("../img/mbpier.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		#container {
+		}
+		.maincontent {
+			width:	1200px;
+			background: rgba(255,255,255,0.2);
+		}
+		
+		#footer {
+		   border-radius: 20px;
+			border: 1px solid #555;
+			height: auto;
+			background: rgba(100,100,255,0.3);		
+		}
+.rainbow {
+  -webkit-animation: rainbow 1s infinite; 
+  -ms-animation: rainbow 1s infinite;
+  animation: rainbow 1s infinite; 
 }
-
-.displaynone {
-	display:none;
+@-webkit-keyframes rainbow {
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
 }
-
-#wrap {
-	min-height: 100%;
-	height: auto;
-	/* Negative indent footer by its height */
-	margin: 0 auto -60px;
-	/* Pad bottom by footer height */
-	padding: 0 0 60px;
+@-ms-keyframes rainbow {
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
 }
-
-#footer {
-	height: 60px;
-	background-color: #f5f5f5;
-	padding-top: 20px;
+@keyframes rainbow {
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
 }
