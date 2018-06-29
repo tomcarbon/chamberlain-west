@@ -47,7 +47,14 @@ Vue.component('physicsapp', {
 					</td>
 					<td>  Thomas E. Chamberlain</td>
 					</tr>
-				</table>				
+				  <tr>
+					<td>
+					<a href="papers/AAAS-PD_PRESENTATION_CHARTS--Cosmic_Acceleration.pdf">AAAS-PD PRESENTATION CHARTS-- Cosmic Acceleration</a>
+					</td>
+					<td>  Thomas E. Chamberlain</td>
+					</tr>
+
+				</table>
 			</div>
 				`	// do not forget this little tick!
 });
