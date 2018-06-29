@@ -14,17 +14,26 @@
 
 		body {
 			background-color: #000;		
-			font-family: "Comic Sans MS", cursive, sans-serif;
+			font-family: "Times New Roman", Times, serif;
         	background-image: url("../img/sky.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
+
 		}
 		#container {
 		}
 		.maincontent {
 			width:	1200px;
-			background: rgba(255,255,255,0.6);
+			background: rgba(255,255,255,0.9);
+			text-align: left;			
+			border-radius: 	15px;
+			border-width:   	5px;
+			border-style:   	outset;
+			border-color:   	skyblue;
+			padding-left: 	20px;
+			padding-bottom:20px; 
 		}
+		
 		
 		#footer {
 		   border-radius: 20px;
