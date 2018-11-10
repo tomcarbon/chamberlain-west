@@ -48,11 +48,19 @@ Vue.component('physicsapp', {
 					<td>  Thomas E. Chamberlain</td>
 					</tr>
 				  <tr>
-					<td>
-					<a href="papers/AAAS-PD_PRESENTATION_CHARTS--Cosmic_Acceleration.pdf">AAAS-PD PRESENTATION CHARTS-- Cosmic Acceleration</a>
-					</td>
-					<td>  Thomas E. Chamberlain</td>
+						<td>
+						<a href="papers/AAAS-PD_PRESENTATION_CHARTS--Cosmic_Acceleration.pdf">AAAS-PD PRESENTATION CHARTS-- Cosmic Acceleration</a>
+						</td>
+						<td>  Thomas E. Chamberlain</td>
 					</tr>
+				  	<tr>
+						<td>
+						<a href="papers/APS-FW-1.PPT">APS-FWS 2018 CHARTS -- Derivation of Cosmic Acceleration Given Anisotropic Light-Speed in 
+the Hubble Expansion</a>
+						</td>
+						<td>  Thomas E. Chamberlain</td>
+					</tr>
+
 
 				</table>
 			</div>
