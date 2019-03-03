@@ -11,10 +11,9 @@
 <body>
 
 <div class="container">
-    <div class="header row clearfix">
+    <div class="header row clearfix" id="headerspec">
         <div class="col-md-12">
             <div class="col-xs-10 col-sm-9 col-md-8 col-lg-7">
-		<br>
                 <a href="index.php"><img id="logo" src="img/logo.png"/></a>
             </div>
         </div>
