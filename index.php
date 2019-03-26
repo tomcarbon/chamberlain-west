@@ -10,17 +10,8 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="header row clearfix" id="headerspec">
-        <div class="col-md-12">
-            <div class="col-xs-10 col-sm-9 col-md-8 col-lg-7">
-                <a href="index.php"><img id="logo" src="img/logo.png"/></a>
-            </div>
-        </div>
-    </div>
-	<div class="col-md-12">
-		<div id="cwmainapp"></div>
-	</div>
+<div class="container col-md-12">
+	<div id="cwmainapp"></div>
 </div>
 
 <script src="js/jquery3.3.1.min.js"></script>
