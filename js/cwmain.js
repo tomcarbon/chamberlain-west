@@ -1,5 +1,42 @@
 
 Vue.component('physicsapp', {
+	data() {
+		return {
+			sampleint: 55,
+			hhref:  'https://tomcarbon.com',
+			hhover: 'sample default hover text.',
+			pcounter1: '',
+			pcounter2: '',
+			pcounter3: '',
+			pcounter4: '',
+			pcounter5: '',
+			pcounter6: '',
+			pcounter7: '',
+			pcounter8: '',
+			pcounter9: '',
+			pcounter10: '',
+			pcounter11: '',
+			pcounter12: '',
+			pcounter13: '',
+			pcounter14: '',
+			pcounter15: '',
+			pcounter16: '',
+			pcounter17: '',
+			pcounter18: '',
+			pcounter19: '',
+			pcounter20: '',
+		}
+        },
+	created: function() {
+		/*
+		console.info("Hello, here I am!");
+		*/
+	},
+	methods: {
+		thecounter() {
+		/*	alert("hello"); */
+		},
+	},
         template: `
                         <div id="physicsapp">
                                 <h1>Physics</h1>
@@ -7,44 +44,51 @@ Vue.component('physicsapp', {
                                 <table> 
                                           <tr>
                                             <th>Article Title</th>
-                                            <th>Author</th>
+                                            <th>Author  </th>
+                                            <th>    </th>
                                           </tr>
 					<hr>
                                         <tr>
                                         <td>
-                                        <a href="papers/Fundamentally%20Anisotropic%20Light-Velocity%20at%20the%20Foundation%20of%20Classical%20Physics.pdf"> Fundamentally Anisotropic Light-Velocity at the Foundation of Classical Physics (pdf)</a>
+                                        <a href="papers/Fundamentally%20Anisotropic%20Light-Velocity%20at%20the%20Foundation%20of%20Classical%20Physics.pdf" v-on:click="thecounter"> Fundamentally Anisotropic Light-Velocity at the Foundation of Classical Physics (pdf)</a>
                                         </td>
                                         <td >  Thomas E. Chamberlain</td>
+                                        <td >  {{this.pcounter1}}</td>
                                         </tr>
                                         <tr>
                                         <td>
                                         <a href="papers/AAAS-PD%20PRESENTATION%20CHARTS---Anisotropic%20Light%20Velocity.pdf">AAAS-PD PRESENTATION CHARTS--Anisotropic Light Velocity (pdf)</a>
                                         </td>
                                         <td>  Thomas E. Chamberlain</td>
+                                        <td >  {{this.pcounter2}}</td>
                                         </tr>
                                         <tr>
                                         <td>
                                         <a href="papers/RevisedSchwarzschildSolutiontoAccommodateSpace-TimeExpansion--SYNOPSIS.pdf">RevisedSchwarzschildSolutiontoAccommodateSpace-TimeExpansion--SYNOPSIS (pdf)</a>
                                         </td>
                                         <td>  Thomas E. Chamberlain</td>
+                                        <td >  {{this.pcounter2}}</td>
                                         </tr>
                                         <tr>
                                         <td>
                                         <a href="papers/ChartsforRevisedSchwarzschildSolution.pdf">Charts for Revised SchwarzchildSolution (pdf)</a>
                                         </td>
                                         <td>  Thomas E. Chamberlain</td>
+                                        <td >  {{this.pcounter3}}</td>
                                         </tr>
                                   <tr>
                                         <td>
                                         <a href="papers/AAAS-PD%20PRESENTATION%20CHARTS--Far%20Field%20Gravitation.pdf">AAAS-PD PRESENTATION CHARTS--Far Field Gravitation</a>
                                         </td>
                                         <td>  Thomas E. Chamberlain</td>
+                                        <td >  {{this.pcounter4}}</td>
                                         </tr>
                                   <tr>
                                                 <td>
                                                 <a href="papers/AAAS-PD_PRESENTATION_CHARTS--Cosmic_Acceleration.pdf">AAAS-PD PRESENTATION CHARTS-- Cosmic Acceleration</a>
                                                 </td>
                                                 <td>  Thomas E. Chamberlain</td>
+                                        <td >  {{this.pcounter5}}</td>
                                         </tr>
                                         <tr>
                                                 <td>
@@ -52,6 +96,14 @@ Vue.component('physicsapp', {
 the Hubble Expansion</a>
                                                 </td>
                                                 <td>  Thomas E. Chamberlain</td>
+                                        <td >  {{this.pcounter6}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                                <a href="papers/Derivation of Cosmic Acceleration--10-25-2019.pdf">Derivation of Cosmic Acceleration and the Cosmological Constant in the Local Universe</a>
+                                                </td>
+                                                <td>  Thomas E. Chamberlain</td>
+                                        <td >  {{this.pcounter7}}</td>
                                         </tr>
 
 
@@ -63,6 +115,41 @@ the Hubble Expansion</a>
 
 
 Vue.component('economicsapp', {
+
+	data() {
+		return {
+			ecounter1: '',
+			ecounter2: '',
+			ecounter3: '',
+			ecounter4: '',
+			ecounter5: '',
+			ecounter6: '',
+			ecounter7: '',
+			ecounter8: '',
+			ecounter9: '',
+			ecounter10: '',
+			ecounter11: '',
+			ecounter12: '',
+			ecounter13: '',
+			ecounter14: '',
+			ecounter15: '',
+			ecounter16: '',
+			ecounter17: '',
+			ecounter18: '',
+			ecounter19: '',
+			ecounter20: '',
+		}
+	},
+	created: function() {
+		/*
+		console.info("Hello, here I am!");
+		*/
+	},
+	methods: {
+		thecounter() {
+		/*	alert("hello"); */
+		},
+	},
         template: `
                         <div id="economicsapp">
                                 <h1>Economics</h1>
@@ -71,6 +158,7 @@ Vue.component('economicsapp', {
                                                           <tr>
                                                             <th>Article Title</th>
                                                             <th>Author</th>
+                                                            <th>   </th>
                                                           </tr>
 							<hr>
                                                         <tr>
@@ -78,42 +166,49 @@ Vue.component('economicsapp', {
                                                          <a href="papers/080712UnevenExpectedRisk.pdf">Uneven Expected Risk (pdf)</a>
                                                          </td>
                                                          <td>  Thomas E. Chamberlain</td>
+							<td >  {{this.ecounter1}}</td>
                                                         </tr>
                                                         <tr>
                                                          <td>
                                                          <a href="papers/Instant_Utility%20Approach--9-16-11a.pdf">Instant Utility Approach to the Social Sciences (pdf)</a>
                                                          </td>
                                                          <td>  Thomas E. Chamberlain</td>
+							<td >  {{this.ecounter2}}</td>
                                                         </tr>
                                                         <tr>
                                                          <td>
                                                          <a href="papers/Chamberlain-Paper_ERSA-Paris_2007.pdf">Relationship of Economic Stability to Social and Economic Rights (pdf) </a>
                                                          </td>
                                                          <td>  Thomas E. Chamberlain</td>
+							<td >  {{this.ecounter3}}</td>
                                                         </tr>
                                                         <tr>
                                                          <td>
                                                          <a href="papers/070412SocialismVsCapitalismRev3.pdf">Socialism vs. Capitalism (pdf)</a>
                                                          </td>
                                                          <td>  Thomas E. Chamberlain</td>
+							<td >  {{this.ecounter4}}</td>
                                                         </tr>
                                                         <tr>
                                                          <td>
                                                          <a href="papers/090703World%20Bank%20Growth%20Report--Assessment%20and%20Extension.pdf">World Bank Growth Report - Assessment and Extension (pdf)</a>
                                                          </td>
                                                          <td>  Thomas E. Chamberlain</td>
+							<td >  {{this.ecounter5}}</td>
                                                         </tr>
                                                         <tr>
                                                          <td>
                                                          <a href="papers/GossenRev5a.pdf">History of the Gossen Equation (pdf)</a>
                                                          </td>
                                                          <td>  Thomas E. Chamberlain</td>
+							<td >  {{this.ecounter6}}</td>
                                                         </tr>
                                                         <tr>
                                                          <td>
                                                          <a href="papers/Unified_Micro-Macro_Economic_Theory.pdf">Unified Micro/Macro Economic Theory (pdf)</a>
                                                          </td>
                                                          <td>  Thomas E. Chamberlain</td>
+							<td >  {{this.ecounter7}}</td>
                                                         </tr>
                                                 </table>
 
@@ -134,9 +229,9 @@ Vue.component('tec-cv', {
                         <p>In physics his studies over the years focused on conceptualizing relativity and quantum mechanics (to the extent either may be possible). In 2012 he decided to concentrate on basic physics—suspending psychology and economics—with the goal of eventually uniting anisotropic (light-velocity) relativity and quantum theory. Because orthodox relativity rejects anisotropic light-velocity this effort immediately concentrated on special relativity to the neglect of quantum theory. In 2014 special relativity (and therefore general relativity) was found incomplete due to the isotropic c=constant postulate. The resulting paper “Fundamentally anisotropic light-velocity at the foundation of classical physics” was presented at the 2015 June AAAS-PD conference in San Francisco. (Original title changed).</p>
 
                         <h3>Far-Field Gravitation</h3>
-                        <p>On the basis of a belief, from well before 2012, that one-way (near) infinite light-speed was crucially germane to deepening classical physics theory, almost immediately after the San Francisco conference (2015 July) he ascertained that Hubble expansion and Einstein’s same-motion acceleration (1907) are essentially related (in some manner)—inasmuch as equating the Hubble expansion, V=rH, to the similar expansion from S-M acceleration (in the limit V=c) with the latter as a free parameter yielded <a href="index.php"><img src="img/cv02.png"/></a>, which is within an order of Milgrom’s universal acceleration constant <a href="index.php"><img src="img/cv03.png"/></a>.</p>
-                        <p>Another nearly seven months (to 2016 February) were required to place Milgrom’s empirical Deep MOND on a relativistic basis (i.e., within “state-of-art” relativity physics, which extends standard relativity physics to formally recognize anisotropic light-speed—see Rizzi et al. (2008) and the AAAS-PD/San Francisco paper). Two new inductive advances enabled this theoretical advance: (1) conjunction of one-way infinite light-speed and the Hubble expansion to yield the corresponding time dilation; followed by (2) combining this time-dilation with its counterpart emerging from the Schwarzschild solution. The result was the relationship <a href="index.php"><img src="img/cv04.png"/></a> – departing from Milgrom’s functionally similar <a href="index.php"><img src="img/cv05.png"/></a> by the Schwarzschild-based radius <a href="index.php"><img src="img/cv06.png"/></a> and the Hubble-expansion based <a href="index.php"><img src="img/cv07.png"/></a>, which, being equal, cancel out. (Note that <a href="index.php"><img src="img/cv08.png"/></a> is not Milgrom’s circular orbit speed <a href="index.php"><img src="img/cv09.png"/></a> but rather the (also invariant) speed emerging from the linearized Lorentz transformation. The factor “2” had been mistakenly overlooked and was inserted as part of the previous revision on March 29, 2017.)</p>
-                        <p>Further developments over the next few months towards a complete deepening of the Einstein Field Equations were eventually suspended in order to prepare for the rapidly approaching AAAS-PD Conference in San Diego (14-17 June 2016), where the approximate formulation of Milgrom’s expression with comparison against astronomical “far-field” star and gas velocities was presented.</p>
+                        <p>On the basis of a belief, from well before 2012, that one-way inward (near) infinite light-speed was crucially germane to deepening classical physics theory, almost immediately after the San Francisco conference (2015 July) he ascertained that Hubble expansion and Einstein’s same-motion acceleration (1907) are essentially related (in some manner)—inasmuch as equating the Hubble expansion, V=rH, to the similar expansion from S-M acceleration (in the limit V=c) yielded <a href="index.php"><img src="img/cv02.png"/></a>, which is within an order of Milgrom’s universal acceleration constant <a href="index.php"><img src="img/cv03.png"/></a>.</p>
+                        <p>Another nearly seven months (to 2016 February) were required to move Milgrom’s (classical) Deep MOND onto a new, deeper relativistic foundation (i.e., one wherein special relativity accommodates complementary anisotropic light-speed—see Rizzi et al. (2008) and the AAAS-PD/San Francisco paper). Two preliminary steps enabled this theoretical advance: (1) joining of inward infinite light-speed within the Hubble expansion to give the newly revealed outward-increasing cosmic time dilation; followed by (2) combining cosmic time-dilation with its counterpart emerging from the Schwarzschild solution. The result was the relationship <a href="index.php"><img src="img/cv04.png"/></a> – departing from Milgrom’s functionally similar <a href="index.php"><img src="img/cv05.png"/></a> by the Schwarzschild-based radius <a href="index.php"><img src="img/cv06.png"/></a> and the Hubble-expansion based <a href="index.php"><img src="img/cv07.png"/></a>, which, being equal (i.e., to leading order), cancel out. (Note that <a href="index.php"><img src="img/cv08.png"/></a> is not Milgrom’s circular orbit speed <a href="index.php"><img src="img/cv09.png"/></a> but rather the (also invariant) speed emerging from the linearized Lorentz transformation. The factor “2” had been mistakenly overlooked and was inserted as part of the previous revision on March 29, 2017.)</p>
+                        <p>Further developments over the next few months towards a complete deepening of the Einstein Field Equations were eventually suspended (and not continued…to the present date (October 2019)) in order to prepare for the rapidly approaching AAAS-PD Conference in San Diego (14-17 June 2016), where the approximate formulation of Milgrom’s expression with comparison against astronomical “far-field” star and gas velocities (i.e., the Tully-Fisher Relation) was presented.</p>
 
                         <h3>Accommodation of Far-Field Gravitation in the Schwarzschild Solution</h3>
                         <p>The principal task in allowing completion of the paper has been establishing how the inverse-radius dependence of far-field gravitation emerges from the invariant far-field time-dilation <a href="index.php"><img src="img/cv10.png"/></a>, a continuing task that began with the relation’s origination in 2016 February and was finally achieved in early November. Steady, non-accelerating Hubble expansion was the key permitting </p>
@@ -144,21 +239,21 @@ Vue.component('tec-cv', {
 	<a href="index.php"><img src="img/cv01.png"/></a>
 	</div>
                         <p> (Note that the factor “1/2” was initially overlooked and inserted as part of the previous revision on March 29, 2017. A significant consequence of this correction was a much-improved correspondence or agreement between Milgrom’s <a href="index.php"><img src="img/cv11.png"/></a> and the present <a href="index.php"><img src="img/cv12.png"/></a>.)</p>
-                        <p>Additional concerns delayed the paper, but it was completed soon before traveling to the AAAS-PD conference in Hawaii with presentation on 22 June. The paper may be accessed in the “Selected Physics Papers” of this website.</p>
+                        <p>Additional concerns delayed the paper, but it was completed soon before traveling to the AAAS-PD conference in Hawaii with presentation on 22 June 2017. The paper may be accessed in the “Selected Physics Papers” of this website.</p>
 
                         <h3>Cosmic Acceleration/Deceleration</h3>
-                        <p>Milgrom’s universal acceleration constant is germane to both “dark matter” and “dark energy”, and we should expect follow-on insight into the latter problem. Here the salient factors are: (1) (inwardly singularly) anisotropic light speed; and (2) Hubble space expansion. Each factor by itself does not yield deeper relativity (i.e., as a scientific discipline), but taken together they give “empirical traction” that helps resolve both problems. Cosmic acceleration, in particular, may be related to time-dilation with increasing lookback-distance due to (again singular) anisotropic light speed within the Hubble flow.</p>
-                        <p>Initial aspects of this advance were given at the 29th International Texas Symposium on Relativistic Astrophysics in Cape Town (2017 December), with further developments presented at the APS April Meeting in Columbus, Ohio (2018 April). Additional advances relating "pure" cosmic acceleration to Newtonian/GRT plus subfield cosmic deceleration in the local universe were given at the Annual AAAS-PD Conference in Pomona, California (2018 June).</p>
+                        <p>Milgrom’s universal acceleration constant is germane to both “dark matter” and “dark energy”, and we should expect follow-on insight into the latter problem. Here the salient factors are: (1) inward infinite light speed; and (2) Hubble space expansion. Each factor by itself does not yield deeper relativity theory (i.e., because each alone in not empirically consequential within physics as a scientific discipline), but taken together they give “empirical traction” that helps resolve both problems. Cosmic acceleration, in particular, may be related to time-dilation with increasing lookback-distance due to (again singular) anisotropic light speed within the Hubble flow.</p>
+	<p>Initial aspects of this advance were given at the 29th International Texas Symposium on Relativistic Astrophysics in Cape Town (2017 December), with further developments presented at the APS April Meeting in Columbus, Ohio (2018 April). Additional advances showing "pure" cosmic acceleration side-by-side with Newtonian/GRT plus subfield cosmic deceleration in the local universe were given at the Annual AAAS-PD Conference in Pomona, California (2018 June) and four months later at the APS-Far West Section meeting in Fullerton, California (2018 October) (wherein the Lorentz transformation was first used in the (leading order) derivation of pure cosmic acceleration). These results were again presented in 2019 June as a poster at the AAS Division on Dynamical Astronomy annual meeting in Boulder, Colorado.</p>
 
                         <h2><center>ACADEMICS AND CHRONOLOGY</center></h2>
 
                         <h3>Education</h3>
-                        <p> PhD, University of California, Berkeley, 1972.</p>
-                        <p>MS, Massachusetts Institute of Technology, 1966.</p>
-                        <p>BS, Boston University, 1961</p>
+                        <p> PhD, Fluid Mechanics, Mathematics, and Thermodynamics; University of California, Berkeley, 1972.</p>
+                        <p>MS, Aeronautics and Astronautics; Massachusetts Institute of Technology, 1966.</p>
+                        <p>BS, Aeronautical Engineering, Boston University, 1961</p>
 
                         <h3>Endeavor</h3>
-                        <p>Research scientist in physics, psychology, and economics.</p>
+                        <p>Research in physics, psychology, and economics.</p>
 
 
 
@@ -177,7 +272,7 @@ Vue.component('tec-cv', {
 
                                 <p class="specialp">2005: Addressed the pre-eminence of poverty-reduction versus social and economic rights. (61st International Atlantic Economic conference, Berlin; later presented at the 47th Congress of the European Regional Science Association, Paris.)</p>
 
-                                <p class="specialp">2006: Addressed how socialism and capitalism may be united in the goal of reversing and defeating poverty. (62nd International Atlantic EconomicConference, Philadelphia; later presented at the 7th Pacific Rim Allied Organizations Conference, Beijing)</p>
+                                <p class="specialp">2006: Addressed how socialism and capitalism may be united in the goal of reversing and defeating poverty. (62nd International Atlantic Economic Conference, Philadelphia; later presented at the 7th Pacific Rim Allied Organizations Conference, Beijing.)</p>
 
                                 <p class="specialp">2007: Extended the minimum wage scope to include human recapitalization as a necessary step for defeating poverty. (64th International Atlantic Economic Conference; Savannah, Georgia.)</p>
 
@@ -199,15 +294,15 @@ Vue.component('tec-cv', {
 
                                 <p class="specialp">2015: Completed the initial paper on the subject—“Fundamentally anisotropic light-velocity at the foundation of classical physics” (new title)—and presented at the 2015 June AAAS-PD conference in San Francisco.</p>
 
-                                <p class="specialp">2015 June: Initiated revision of general relativity to accommodate anisotropic light-velocity.</p>
+                                <p class="specialp">2015 June: Initiated investigation of general relativity regarding anisotropic light-velocity.</p>
 
-                                <p class="specialp">2016 February: Developed Milgrom's empirical <a href="index.php"><img src="img/cv17.png"/></a> as  theoretical <a href="index.php"><img src="img/cv16.png"/></a> within up-to-date relativity physics. (Corrected <a href="index.php"><img src="img/cv15.png"/></a> in the prior revision.)</p>
+                                <p class="specialp">2016 February: Developed Milgrom's classical <a href="index.php"><img src="img/cv17.png"/></a> as  relativistic <a href="index.php"><img src="img/cv16.png"/></a> within up-to-date relativity physics. (Corrected <a href="index.php"><img src="img/cv15.png"/></a> in the prior revision.)</p>
 
                                 <p class="specialp">2016 June: Letter published in the Financial Times (2 June) recommending conditional basic income (properly done) to grow human capital thereby promoting "the basic economic right, the Right to Life", where the resulting boost to economic growth yields increased tax revenue to keep government finances in balance.  </p>
 
                                 <p class="specialp">2016 June: Presented an approximate theoretical formulation of Milgrom's empirical Deep MOND at the annual AAAS-PD Conference (San Diego), which advances general relativity breakdown over dark matter as the explanation for "missing matter" throughout the cosmos.  </p>
 
-                                <p class="specialp">2016 November:   Recognized     steady,   non-accelerating   Hubble   expansion    as    the   basis  for   mathematical   derivation   of   far-field  gravity (inserted factor ½ correction in the previous revision)</p>
+                                <p class="specialp">2016 November:   Recognized     steady,   non-accelerating   Hubble   expansion    as    the   (leading order) basis  for   mathematical   derivation   of   far-field  gravity (inserted factor ½ correction in the previous revision)</p>
 
                                 <center>
                                         <p>             <a href="index.php"><img src="img/cv13.png"/></a> ,</p>
@@ -223,10 +318,11 @@ Vue.component('tec-cv', {
 
                                 <p class="specialp">2017 September-October: The sub-field paper given in Hawaii is accepted for presentation at the 29th Texas Symposium on Relativistic Astrophysics in early December (Cape Town, South Africa). Initial work on pure cosmic acceleration, as parallel or complementary to sub-field (baryonic) cosmic deceleration, is planned for the symposium talk.         (Rev. 15 March 2018)</p>
 
-                                <p class="specialp">2018 March: Hubble expansion acceleration for the empty universe (Ω=0 with dH/dt=0) was presented as a new result at the Texas2017 symposium. Further developments since December that model (partially) offsetting pure cosmic acceleration versus sub-field cosmic deceleration in the local universe (z <~ 0.1) - with comparison versus Sn-1a apparent luminosity residuals - will be given at the APS April Meeting in Columbus. </p>
+                                <p class="specialp">2018 March: Hubble expansion acceleration for the empty universe (Ω=0 with dH/dt=0) was presented as a new result at the Texas2017 symposium. Further developments since December that model (partially) offsetting pure cosmic acceleration versus sub-field cosmic deceleration in the local universe (z <~ 0.1) - with comparison versus Sn-1a apparent luminosity residuals - were planned for the APS April Meeting in Columbus. </p>
 
-                                <p class="specialp">2018 June: Progress on the nature of cosmic acceleration/deceleration was presented at the 2018 APS April Meeting in Columbus. Follow-on advances were given at the 2018 AAAS-PD Conference in Pomona, California, with the presentation title "Relativistic Formulation of Cosmic Acceleration vs. Cosmic Deceleration in the Local Universe." The corresponding abstract and charts are available on the Physics Page; completion of the "in progress" paper is expected later this year.</p>
+                                <p class="specialp">2018 June: Progress on the nature of cosmic acceleration/deceleration was presented at the 2018 APS April Meeting in Columbus. Follow-on advances were given at the 2018 AAAS-PD Conference in Pomona, California with the presentation title "Relativistic Formulation of Cosmic Acceleration vs. Cosmic Deceleration in the Local Universe." The corresponding abstract and charts are available on the Physics Page; completion of the "in progress" paper is expected later this year.</p>
                                 <p class="specialp">2018 November: A more substantive derivation of cosmic acceleration entitled “Derivation of Cosmic Acceleration Given Anisotropic Light-Speed in the Hubble Expansion” yielding <a href="index.php"><img src="img/cv18.png"/></a> to leading order was presented at the annual APS Far West Section meeting (Fullerton) on 19 October, showing good agreement with supernova SNe-Ia acceleration measurements in the local universe, 0.01<z<0.3. The abstract and charts are available on the Physics Page. Work continues on the cosmic acceleration paper with completion pushed into early-to-mid 2019.</p>
+	<p class="specialp">2019 September: The cosmic acceleration paper was completed mid-September, about six months later than was expected last year. A sufficiently concise mathematical demonstration that light-speed is fundamentally anisotropic in all inertial frames—in addition to isotropic—was the last hurdle, with numerous other important/emergent concerns along the way. A preprint has been posted on ResearchGate and the Physics Page herein. Updating the galactic “missing matter” resolution based on recent developments is a prime item on the “to do” list.</p>
                         </div>          `       // do not forget this little tick!
 });
 
