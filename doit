@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "Welcome to the quicker docker builder for chamberlain-west !"
+read -p "Press b to build, r to run or n/q to quit, and hit enter: " rc
+case "$rc" in
+	b)  docker build -t chamberlain-west .;;
+	r)  echo "Did you remember to stop the previously running job?"
+		docker run -d -p 80:80 chamberlain-west;;
+	n) exit;;
+	q) exit;;
+esac
+./doit
+
+

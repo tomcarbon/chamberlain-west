@@ -1,0 +1,112 @@
+body {
+    background-color: white !important;
+    color: black;
+}
+
+	a {
+		color:		black;
+		font-size:	12px;
+	}
+	tr {
+		margin-bottom:	10px;
+	}
+	td {
+		color:		black;
+		font-size:	12px;
+	}
+
+
+
+
+.nicebutton0{
+	position: 	relative;
+	float:	  	left;
+	margin-top:	2px;
+	margin-left:	5px;
+	width:		140px;
+	height:		28px;
+	font-size:	18px;
+	border-width:	2px;
+	border-color:	darkred;
+	border-style:	solid;
+	border-radius:	10px;
+	background: 	#008ecc;
+	text-align:	center;
+	color:		white;
+	font-weight: 	bolder;
+}
+#tec-cv {
+	position:	relative;
+	top:		160px;
+	text-align: 	left;
+}
+#economicsapp {
+	position:	relative;
+	top:		160px;
+	display:	none;
+	text-align: 	left;
+}
+#physicsapp {
+	position:	relative;
+	top:		160px;
+	display:	none;
+	text-align: 	left;
+	word-wrap:	break-word;
+}
+
+
+.header {
+	position:	fixed;
+	height:		160px;
+	background: #ffffff; 
+	background: -moz-linear-gradient(top, #008ecc 0%, #008ecc 50%, #ffffff 100%); 
+	background: -webkit-linear-gradient(top, #008ecc 0%, #008ecc 50%, #ffffff 100%); 
+	background: linear-gradient(to bottom, #008ecc 0%,  #008ecc 50%, #ffffff 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008ecc', endColorstr='#ffffff',GradientType=0 );
+	border-radius:	8px;
+	object-fit:	contain;
+	z-index:	2;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav li {
+    margin-left: 10px !important;
+}
+#coin {
+    width: 175px;
+}
+#header-info {
+    color: #ffffff;
+}
+
+.mypadded {
+	margin-left:	15px;
+}
+#main-body {
+    background: #ffffff; 
+    background: -moz-linear-gradient(top, #000000 0%, #f1cb53 25%, #cbf153 90%, #ffffff 100%); 
+    background: -webkit-linear-gradient(top, #000000 0%,#f1cb53 25%,#cbf153 90%, #ffffff 100%); 
+    background: linear-gradient(to bottom, #000000 0%,#f1cb53 25%,#cbf153 90%, #ffffff 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e9ab22',GradientType=0 );
+    color:		black;
+    min-height: 	350px;
+    text-align:		left;
+}
+@media only screen and (max-width: 990px) {
+    #content-body {
+        margin-top: unset !important;
+    }
+}
+
+.span-header {
+    font-weight: bold;
+    font-size: 14pt;
+}
+.span-bold {
+    font-weight: bold;
+}
+.span-color-white {
+    color: #fff;
+}
+
+
